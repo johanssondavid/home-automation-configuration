@@ -2,8 +2,8 @@ homeassistant:
   # Name of the location where Home Assistant is running
   name: Home
   # Location required to calculate the time the sun rises and sets
-  latitude: 57.686506
-  longitude: 11.985207
+  latitude: !secret lat
+  longitude: !secret long
   # Impacts weather/sunrise data (altitude above sea level in meters)
   elevation: 2
   # metric for Metric, imperial for Imperial
@@ -58,7 +58,7 @@ sensor:
     monitored_conditions:
       - temperature
   - platform: command_line
-    command: ssh david@linnebo.dynu.net python temp.py
+    command: !secret ssh
     name: linnebo_temp
     unit_of_measurement: "°C"
 
