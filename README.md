@@ -14,6 +14,7 @@ HW
 
 SW
 * Home Assistant
+* AppDaemon
 * Node red
 * Deconz
 * HA Bridge
