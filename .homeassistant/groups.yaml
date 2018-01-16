@@ -1,0 +1,15 @@
+Lampor:
+  entities:
+    - light.fonster1
+    - light.fonster2
+    - light.golvlampa
+    - light.koksfonster
+    - light.sanglampa
+    - light.fonster_sovrum
+    - light.hall
+    - light.light_1
+
+Fonster:
+  entities:
+    - light.fonster1
+    - light.fonster2

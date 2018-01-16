@@ -1,0 +1,11 @@
+modes:
+  module: modes
+  class: Modes
+
+tv:
+  module: tv
+  class: TVReceiver
+
+advent:
+  module: advent
+  class: Advent

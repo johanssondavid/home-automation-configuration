@@ -1,0 +1,145 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: 57.686506
+  longitude: 11.985207
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 2
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Stockholm
+  # Customization file
+  customize: !include customize.yaml
+
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  # Uncomment this to add a password (recommended!)
+   api_password: !secret http
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+# Weather prediction
+sensor:
+  - platform: yr
+    monitored_conditions:
+      - temperature
+  - platform: command_line
+    command: ssh david@linnebo.dynu.net python temp.py
+    name: linnebo_temp
+    unit_of_measurement: "°C"
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+switch:
+  platform: command_line
+  switches:
+    advent_kok:
+      command_on: curl http://192.168.0.15/b_on
+      command_off: curl http://192.168.0.15/b_off
+    advent_vardagsrum:
+      command_on: curl http://192.168.0.15/d_on
+      command_off: curl http://192.168.0.15/d_off
+    livingroom_shelf:
+      command_on: curl http://192.168.0.15/c_on
+      command_off: curl http://192.168.0.15/c_off
+    receiver:
+      command_on: curl http://192.168.0.15/a_on
+      command_off: curl http://192.168.0.15/a_off
+
+
+tradfri:
+  host: 192.168.0.22
+  allow_tradfri_groups: false
+
+volvooncall:
+  username: !secret volvo_on_call_user
+  password: !secret volvo_on_call_pw
+
+device_tracker:
+  - platform: nmap_tracker
+    hosts: 192.168.0.1/24
+    consider_home: 900
+    track_new_devices: no
+
+ios:
+
+input_select:
+  house_mode:
+    name: House Mode
+    options:
+    - Evening
+    - Night
+    - Day
+    - Morning
+    initial: Evening
+
+apple_tv:
+  - host: 192.168.0.14
+    login_id: 00000000-3f5b-b3eb-3fa8-fb3ef8224211
+    name: Apple TV
+
+influxdb:
+    host: 127.0.0.1
+    database: home_assistant
+    username: home-assistant
+    password: !secret http
+
+binary_sensor:
+  - platform: command_line
+    command: ping -c 1 192.168.0.27|grep "1 packets transmitted, 1 received"|wc -l
+    scan_interval: 5
+    payload_on: 1
+    payload_off: 0
+    name: TV
+
+input_boolean:
+    visitor_present:
+        name: Visitor
+        initial: off
+
+weblink:
+    entities:
+      - name: Appdaemon dashboard
+        url: http://192.168.0.10:5050/
+      - name: Conbee
+        url: http://192.168.0.10/
+      - name: Node-red
+        url: http://192.168.0.10:1880/
+      - name: HA Bridge
+        url: http://192.168.0.10:8124/

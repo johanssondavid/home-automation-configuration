@@ -1,0 +1,29 @@
+clock:
+    widget_type: clock
+    #widget_style: "background: white"
+    date_style: "color: black"
+    time_style: "color: green"
+
+load_main_panel:
+    widget_type: navigate
+    title: Main Panel
+    icon_inactive: fa-home
+    dashboard: MainPanel
+
+load_vasttrafik:
+    widget_type: navigate
+    title: Västtrafik
+    icon_inactive: fa-bus
+    dashboard: Vasttrafik
+
+load_car:
+    widget_type: navigate
+    title: V40
+    icon_inactive: fa-car
+    dashboard: Car
+
+reload:
+    widget_type: reload
+
+layout: 
+    - clock(2x2), load_main_panel(1x1), load_car(1x1), load_vasttrafik(1x1), spacer(2x1), reload

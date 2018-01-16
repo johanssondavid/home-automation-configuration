@@ -1,0 +1,40 @@
+switch.livingroom_shelf:
+  friendly_name: Vardagsrum Bokhylla och Vitrinskåp
+  homebridge_visible: true
+
+light.golvlampa:
+  friendly_name: Golvlampa
+  homebridge_visible: true
+
+light.koksfonster:
+  friendly_name: Fönster Kök
+  homebridge_visible: true
+
+light.sanglampa:
+  friendly_name: Sänglampa
+  homebridge_visible: true
+
+light.fonster1:
+  friendly_name: Fönster Vardagsrum 1
+  homebridge_visible: true
+
+light.fonster2:
+  friendly_name: Fönster Vardagsrum 2
+  homebridge_visible: true
+
+light.hall:
+  friendy_name: Lampa Hall
+  homebridge_visible: true
+
+light.fonster_sovrum:
+  friendy_name: Fönster Sovrum
+  homebridge_visible: true
+
+switch.advent_kok:
+  friendly_name: Adventsljusstake Kök
+  homebridge_visible: true
+
+switch.advent_vardagsrum:
+  friendly_name: Adventsljusstake Vardagsrum
+  homebridge_visible: true
+

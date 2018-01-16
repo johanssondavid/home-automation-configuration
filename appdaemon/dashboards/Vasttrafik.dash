@@ -1,0 +1,22 @@
+##
+## Main arguments, all optional
+##
+title: Hemkontroll
+widget_dimensions: [120, 120]
+widget_margins: [5, 5]
+columns: 8
+
+vasttrafik:
+  widget_type: iframe
+  title: Västtrafik
+  refresh: 60
+  url_list:
+    - http://www.vasttrafik.se/nasta-tur-fullskarm/?externalid=9021014001390000&friendlyname=Bergsprängaregatan+Göteborg
+  
+
+layout:
+    - include: top_panel
+    - vasttrafik(8x4)
+    - 
+    -
+    -

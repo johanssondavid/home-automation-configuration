@@ -1,0 +1,11 @@
+.*/
+.*
+!.gitignore
+!.homeassistant
+secrets.yaml
+known_devices.yaml
+__pycache__
+compiled
+*.db
+*.log
+tts

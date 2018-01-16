@@ -1,0 +1,159 @@
+##
+## Main arguments, all optional
+##
+title: Hemkontroll
+widget_dimensions: [120, 120]
+widget_margins: [5, 5]
+columns: 8
+
+label:
+    widget_type: label
+    text: Hemma hos David
+
+iphone:
+    widget_type: sensor
+    title: iPhone batteri
+    entity: sensor.davids_iphone_battery_level
+
+linnebo:
+    widget_type: sensor
+    title: Linnebo
+    entity: sensor.linnebo_temp
+    precision: 1
+
+mode:
+    widget_type: sensor
+    title: Mode
+    entity: input_select.house_mode
+
+nexa:
+    widget_type: switch
+    entity: switch.livingroom_shelf
+    title: Bokhylla
+    icon_on: mdi-lamp
+    icon_off: mdi-lamp
+
+advent:
+    widget_type: switch
+    entity: switch.advent_vardagsrum
+    title: Adventsljusstake
+    icon_on: mdi-lamp
+    icon_off: mdi-lamp
+
+all_lights:
+    widget_type: group
+    entity: group.lampor
+    title: Alla trådfri
+    icon_on: mdi-lamp
+    icon_off: mdi-lamp
+    monitored_entity: light.golvlampa
+
+david_presence:
+    widget_type: device_tracker
+    title: David
+    device: d0c5f333dc93
+    enable: 1
+    icon_on: fa-male
+    icon_off: fa-male
+    icon_style_active: "color: #4bcdea"
+
+visitor_presence2:
+    widget_type: device_tracker
+    title: Besökare
+    device: visitor
+    enable: 1
+    icon_on: fa-male
+    icon_off: fa-male
+    icon_style_active: "color: #4bcdea"
+
+visitor_presence:
+    widget_type: input_boolean
+    title: Besökare
+    entity: input_boolean.visitor_present
+    icon_on: fa-male
+    icon_off: fa-male
+    icon_style_active: "color: #4bcdea"
+
+
+lamp1:
+    widget_type: light
+    entity: light.fonster_sovrum
+    title: Fönster sovrum
+    icon_on: mdi-lamp
+    icon_off: mdi-lamp
+
+lamp2:
+    widget_type: light
+    entity: light.sanglampa
+    title: Sänglampa
+    icon_on: mdi-lamp
+    icon_off: mdi-lamp
+
+lamp3:
+    widget_type: group
+    entity: group.fonster
+    title: Fönster vardagsrum
+    icon_on: mdi-lamp
+    icon_off: mdi-lamp
+    monitored_entity: light.fonster1
+
+lamp30:
+    widget_type: light
+    entity: light.fonster1
+    title: Fönster vardagsrum 1
+    icon_on: mdi-lamp
+    icon_off: mdi-lamp
+
+lamp31:
+    widget_type: light
+    entity: light.fonster2
+    title: Fönster vardagsrum 2
+    icon_on: mdi-lamp
+    icon_off: mdi-lamp
+
+lamp4:
+    widget_type: light
+    entity: light.golvlampa
+    title: Golvlampa
+    icon_on: mdi-lamp
+    icon_off: mdi-lamp
+
+lamp6:
+    widget_type: light
+    entity: light.hall
+    title: Hall
+    icon_on: mdi-lamp
+    icon_off: mdi-lamp
+
+lamp7:
+    widget_type: light
+    entity: light.koksfonster
+    title: Fönster kök
+    icon_on: mdi-lamp
+    icon_off: mdi-lamp
+
+car_fuel:
+    widget_type: gauge
+    min: 0
+    max: 55
+    entity: sensor.ste747_fuel_amount
+    title: V40 Bränsle
+    units: l
+
+car_range:
+    widget_type: sensor
+    entity: sensor.ste747_range
+    title: V40 Räckvidd
+
+temp:
+    widget_type: sensor
+    entity: sensor.yr_temperature
+    title: Göteborg
+    precision: 1
+
+layout:
+    - include: top_panel
+    - temp, linnebo, david_presence, visitor_presence, nexa, all_lights
+    - car_fuel, car_range, iphone
+    - lamp1, lamp2, lamp3, lamp4, lamp6, lamp7, advent
+    - include: mode_panel

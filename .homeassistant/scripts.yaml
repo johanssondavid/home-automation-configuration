@@ -1,0 +1,146 @@
+morning:
+  alias: Morning
+  sequence:
+    - event: MODE_CHANGE
+      event_data:
+        mode: Morning
+
+day:
+  alias: Day
+  sequence:
+    - event: MODE_CHANGE
+      event_data:
+        mode: Day
+
+evening:
+  alias: Evening
+  sequence:
+    - event: MODE_CHANGE
+      event_data:
+        mode: Evening
+
+night:
+  alias: Night
+  sequence:
+    - event: MODE_CHANGE
+      event_data:
+        mode: Night
+
+remote1:
+  alias: Remote button 1
+  sequence:
+    - event: REMOTE_PRESSED
+      event_data:
+        button: 1
+
+remote2:
+  alias: Remote button 2
+  sequence:
+    - event: REMOTE_PRESSED
+      event_data:
+        button: 2
+
+remote3:
+  alias: Remote button 3
+  sequence:
+    - event: REMOTE_PRESSED
+      event_data:
+        button: 3
+
+remote4:
+  alias: Remote button 4
+  sequence:
+    - event: REMOTE_PRESSED
+      event_data:
+        button: 4
+
+remote5:
+  alias: Remote button 5
+  sequence:
+    - event: REMOTE_PRESSED
+      event_data:
+        button: 5
+
+harmony_button_1_on:
+  alias: Harmony button 1 on
+  sequence:
+    - event: HARMONY_PRESSED
+      event_data:
+        button: 1_on
+
+harmony_button_1_off:
+  alias: Harmony button 1 off
+  sequence:
+    - event: HARMONY_PRESSED
+      event_data:
+        button: 1_off
+
+harmony_button_2_on:
+  alias: Harmony button 2 on
+  sequence:
+    - event: HARMONY_PRESSED
+      event_data:
+        button: 2_on
+
+harmony_button_2_off:
+  alias: Harmony button 2 off
+  sequence:
+    - event: HARMONY_PRESSED
+      event_data:
+        button: 2_off
+
+harmony_button_3_on:
+  alias: Harmony button 3 on
+  sequence:
+    - event: HARMONY_PRESSED
+      event_data:
+        button: 3_on
+
+harmony_button_3_off:
+  alias: Harmony button 3 off
+  sequence:
+    - event: HARMONY_PRESSED
+      event_data:
+        button: 3_off
+
+harmony_button_4_on:
+  alias: Harmony button 4 on
+  sequence:
+    - event: HARMONY_PRESSED
+      event_data:
+        button: 4_on
+
+harmony_button_4_off:
+  alias: Harmony button 4 off
+  sequence:
+    - event: HARMONY_PRESSED
+      event_data:
+        button: 4_off
+
+harmony_button_5_on:
+  alias: Harmony button 5 on
+  sequence:
+    - event: HARMONY_PRESSED
+      event_data:
+        button: 5_on
+
+harmony_button_5_off:
+  alias: Harmony button 5 off
+  sequence:
+    - event: HARMONY_PRESSED
+      event_data:
+        button: 5_off
+
+harmony_button_6_on:
+  alias: Harmony button 6 on
+  sequence:
+    - event: HARMONY_PRESSED
+      event_data:
+        button: 6_on
+
+harmony_button_6_off:
+  alias: Harmony button 6 off
+  sequence:
+    - event: HARMONY_PRESSED
+      event_data:
+        button: 6_off

@@ -1,0 +1,75 @@
+##
+## Main arguments, all optional
+##
+title: Hemkontroll
+widget_dimensions: [120, 120]
+widget_margins: [5, 5]
+columns: 8
+
+# binary_sensor.ste747_brake_fluid
+# binary_sensor.ste747_bulbs
+# binary_sensor.ste747_doors
+# binary_sensor.ste747_service
+# binary_sensor.ste747_washer_fluid
+# binary_sensor.ste747_windows
+# sensor.ste747_fuel_amount
+# sensor.ste747_fuel_level
+# sensor.ste747_odometer
+# sensor.ste747_range
+
+
+check1:
+    widget_type: sensor
+    entity: binary_sensor.ste747_brake_fluid
+    title: Bromsvätska
+
+check2:
+    widget_type: sensor
+    entity: binary_sensor.ste747_bulbs
+    title: Lampor
+    icon-on: fa-lightbulb-o
+    icon-off: fa-lightbulb-o
+
+check3:
+    widget_type: sensor
+    entity: binary_sensor.ste747_doors
+    title: Dörrar
+
+check4:
+    widget_type: sensor
+    entity: binary_sensor.ste747_service
+    title: Service
+
+check5:
+    widget_type: sensor
+    entity: binary_sensor.ste747_washer_fluid
+    title: Spolarvätska
+
+check6:
+    widget_type: sensor
+    entity: binary_sensor.ste747_windows
+    title: Fönster
+
+measure1:
+    widget_type: sensor
+    entity: sensor.ste747_fuel_amount
+    title: Bränsle
+
+measure2:
+    widget_type: sensor
+    entity: sensor.ste747_odometer
+    title: Odometer
+
+measure3:
+    widget_type: sensor
+    entity: sensor.ste747_range
+    title: Räckvidd
+  
+
+
+layout:
+    - include: top_panel
+    - check1, check2, check3, check4, check5, check6
+    - measure1, measure2, measure3
+    -
+    -
