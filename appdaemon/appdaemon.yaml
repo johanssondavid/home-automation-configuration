@@ -1,0 +1,15 @@
+AppDaemon:
+  logfile: STDOUT
+  errorfile: STDERR
+  logsize: 100000
+  log_generations: 3
+  threads: 10
+  api_port: 5000
+  api_key: !secret api_key
+
+HASS:
+  ha_url: http://localhost:8123
+  ha_key: !secret api_key
+
+HADashboard:
+  dash_url: http://localhost:5050
