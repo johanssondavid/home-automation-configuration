@@ -1,0 +1,34 @@
+name: Scene 2
+entities:
+  switch.livingroom_shelf:
+    state: on
+  light.golvlampa:
+    state: on
+    brightness: 127
+    color_temp: 370
+  light.fonster1:
+    state: on
+    brightness: 127
+    color_temp: 370
+  light.sanglampa:
+    state: on
+    brightness: 127
+    color_temp: 348
+  light.koksfonster:
+    state: on
+    brightness: 127
+    color_temp: 351
+  light.light_1:
+    state: off
+  light.fonster_sovrum:
+    state: on
+    brightness: 127
+    color_temp: 457
+  light.hall:
+    state: on
+    brightness: 127
+    color_temp: 366
+  light.fonster2:
+    state: on
+    brightness: 127
+    color_temp: 370

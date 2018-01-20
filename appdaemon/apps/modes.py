@@ -117,75 +117,27 @@ class Modes(appapi.AppDaemon):
 
   def scene_off(self):
     self.scene = 0
-    self.light_1.turn_off()
-    self.turn_off("switch.livingroom_shelf")
-    self.fonster1.turn_off()
-    self.fonster2.turn_off()
-    self.golvlampa.turn_off()
-    self.koksfonster.turn_off()
-    self.sanglampa.turn_off()
-    self.fonster_sovrum.turn_off()
-    self.hall.turn_off()
+    self.turn_on("scene.scene_0")
 
   def scene_1(self):
     self.scene = 1
-    self.light_1.turn_off()
-    self.turn_off("switch.livingroom_shelf")
-    self.fonster1.set_brightness(20)
-    self.fonster2.turn_off()
-    self.golvlampa.set_brightness(20)
-    self.koksfonster.set_brightness(20)
-    self.sanglampa.turn_off()
-    self.fonster_sovrum.turn_off()
-    self.hall.set_brightness(20)
+    self.turn_on("scene.scene_1")
 
   def scene_2(self):
     self.scene = 2
-    self.light_1.turn_off()
-    self.turn_on("switch.livingroom_shelf")
-    self.fonster1.set_brightness(50)
-    self.fonster2.set_brightness(50)
-    self.golvlampa.set_brightness(50)
-    self.koksfonster.set_brightness(50)
-    self.sanglampa.set_brightness(50)
-    self.fonster_sovrum.set_brightness(50)
-    self.hall.set_brightness(50)
+    self.turn_on("scene.scene_2")
 
   def scene_3(self):
     self.scene = 3
-    self.light_1.set_brightness(25)
-    self.turn_on("switch.livingroom_shelf")
-    self.fonster1.set_brightness(75)
-    self.fonster2.set_brightness(75)
-    self.golvlampa.set_brightness(75)
-    self.koksfonster.set_brightness(75)
-    self.sanglampa.set_brightness(75)
-    self.fonster_sovrum.set_brightness(75)
-    self.hall.set_brightness(75)
+    self.turn_on("scene.scene_3")
 
   def scene_4(self):
     self.scene = 4
-    self.light_1.set_brightness(60)
-    self.turn_on("switch.livingroom_shelf")
-    self.fonster1.set_brightness(100)
-    self.fonster2.set_brightness(100)
-    self.golvlampa.set_brightness(100)
-    self.koksfonster.set_brightness(100)
-    self.sanglampa.set_brightness(100)
-    self.fonster_sovrum.set_brightness(100)
-    self.hall.set_brightness(100)
+    self.turn_on("scene.scene_4")
 
   def scene_5(self):
     self.scene = 5
-    self.light_1.set_brightness(100)
-    self.turn_on("switch.livingroom_shelf")
-    self.fonster1.set_brightness(100)
-    self.fonster2.set_brightness(100)
-    self.golvlampa.set_brightness(100)
-    self.koksfonster.set_brightness(100)
-    self.sanglampa.set_brightness(100)
-    self.fonster_sovrum.set_brightness(100)
-    self.hall.set_brightness(100)
+    self.turn_on("scene.scene_5")
 
 
   def get_mode(self):

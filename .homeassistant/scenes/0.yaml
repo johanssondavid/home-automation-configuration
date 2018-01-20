@@ -1,0 +1,20 @@
+name: Scene 0
+entities:
+  light.light_1:
+    state: off
+  light.hall:
+    state: off
+  light.koksfonster:
+    state: off
+  light.fonster1:
+    state: off
+  light.fonster_sovrum:
+    state: off
+  switch.livingroom_shelf:
+    state: off
+  light.sanglampa:
+    state: off
+  light.fonster2:
+    state: off
+  light.golvlampa:
+    state: off
