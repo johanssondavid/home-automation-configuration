@@ -1,0 +1,24 @@
+name: Scene Night
+entities:
+  switch.livingroom_shelf:
+    state: off
+  light.golvlampa:
+    state: off
+  light.fonster1:
+    state: off
+  light.sanglampa:
+    state: off
+  light.koksfonster:
+    state: on
+    brightness: 20
+    color_temp: 351
+  light.light_1:
+    state: off
+  light.fonster_sovrum:
+    state: off
+  light.hall:
+    state: on
+    brightness: 20
+    color_temp: 366
+  light.fonster2:
+    state: off

@@ -6,88 +6,18 @@ import time
 MOTION_DELAY = 90
 DIMMER_STEP = 10
 
+## IKEA
+# kall 247
+# medium 367
+# varm 455
 
-class LightDimmer():
-  def __init__(self, appdaemon, entity_id):
-    self.appdaemon = appdaemon
-    self.entity_id = entity_id
-    self.current_brightness = 254
-    self.sleep = 1
-
-  def set_color(self, rgb):
-    self.appdaemon.turn_on(self.entity_id, rgb_color=rgb, brightness=self.current_brightness)
-
-  def set_temp(self, temp):
-    self.appdaemon.turn_on(self.entity_id, color_temp=temp, brightness=self.current_brightness)
-
-  def set_brightness(self, brightness_percent):
-    brightness = brightness_percent*(255/100)
-    self.current_brightness = brightness
-    self.requested_brightness = brightness
-    self.appdaemon.turn_on(self.entity_id, brightness=brightness)
-
-  def turn_off(self):
-    self.appdaemon.turn_off(self.entity_id)
-
-  def turn_on(self):
-    self.appdaemon.turn_on(self.entity_id)
-
-  def set_level_slow(self, brightness_percent, transition_time):
-    brightness = brightness_percent*(255/100)
-
-    self.requested_brightness = brightness
-
-    diff = abs(self.current_brightness - self.requested_brightness)
-    self.sleep = transition_time / (diff / DIMMER_STEP)
-
-    self.local_update(None)
-
-  def local_update(self, kwargs):
-    if self.current_brightness < self.requested_brightness:
-      self.current_brightness = min(self.requested_brightness, self.current_brightness + DIMMER_STEP)
-    elif self.current_brightness > self.requested_brightness:
-      self.current_brightness = max(self.requested_brightness, self.current_brightness - DIMMER_STEP)
-    else:
-      return
-
-    self.appdaemon.turn_on(self.entity_id, brightness=self.current_brightness)
-    self.appdaemon.run_in(self.local_update, self.sleep)
-
+## Philips
+# kall 153
+# medium 319
+# varm 500
 
 class Modes(appapi.AppDaemon):
   def initialize(self):
-    # setup lamps
-    self.light_1          = LightDimmer(self, "light.light_1")
-    self.fonster1         = LightDimmer(self, "light.fonster1")
-    self.fonster2         = LightDimmer(self, "light.fonster2")
-    self.golvlampa        = LightDimmer(self, "light.golvlampa")
-    self.koksfonster      = LightDimmer(self, "light.koksfonster")
-    self.sanglampa        = LightDimmer(self, "light.sanglampa")
-    self.fonster_sovrum   = LightDimmer(self, "light.fonster_sovrum")
-    self.hall             = LightDimmer(self, "light.hall")
-
-
-    #self.dimmertest2 = LightDimmer(self, "light.golvlampa")
-    #self.dimmertest.set_level_slow(255)
-    #self.dimmertest2.set_level_slow(255)
-
-    #self.dimmertest2.set_brightness(0)
-    #self.dimmertest2.set_brightness(10)
-    #self.dimmertest2.set_level_slow(100, 600)
-    #self.dimmertest.set_color([255,0,0])
-    #self.dimmertest.set_temp(319)
-    #self.dimmertest2.set_temp(367)
-
-    ## IKEA
-    # kall 247
-    # medium 367
-    # varm 455
-
-    ## Philips
-    # kall 153
-    # medium 319
-    # varm 500
-
     self.lamp_state_on = self.get_state("switch.livingroom_shelf") == "on"
     self.log("lamp_state_on: " + str(self.lamp_state_on))
 
@@ -103,7 +33,7 @@ class Modes(appapi.AppDaemon):
     self.listen_state(self.motion_cb, "sensor.motion_2")
 
     # alarms
-    runtime = datetime.time(5, 45, 0)
+    runtime = datetime.time(5, 30, 0)
     self.run_daily(self.morning_cb, runtime)
 
     # sunset/sunrise
@@ -149,8 +79,7 @@ class Modes(appapi.AppDaemon):
       if self.get_mode() == "Night":
         self.motion_timer = time.time() + MOTION_DELAY
         self.run_in(self.lights_off_after_motion, MOTION_DELAY + 5)
-        self.koksfonster.set_brightness(20)
-        self.hall.set_brightness(20)
+        self.turn_on("scene.scene_night")
 
       morning = (self.get_mode() == "Morning") and not(self.visitor_present())
       evening = (self.get_mode() == "Evening") and not(self.someone_is_home())
@@ -159,8 +88,7 @@ class Modes(appapi.AppDaemon):
 
   def lights_off_after_motion(self, kwargs):
     if (self.motion_timer < time.time()) and (self.get_mode() == "Night"):
-      self.koksfonster.turn_off()
-      self.hall.turn_off()
+      self.scene_off()
     
   def everyone_left_home_cb(self, entity, attribute, old, new, kwargs):
     self.log("eveyone left home")
@@ -206,6 +134,10 @@ class Modes(appapi.AppDaemon):
       self.scene_4()
     if button == "2_off":
       self.scene_off()
+    if button == "3_on":
+      self.cycle_color(1)
+    if button == "4_on":
+      self.cycle_color(-1)
 
   def button_pressed_cb(self, event_name, data, kwargs):
     button = data["button"]
@@ -213,13 +145,17 @@ class Modes(appapi.AppDaemon):
 
     if button == 1:
       self.toggle_lamps()
+    elif button == 2:
+      self.cycle_scene(1)
+    elif button == 3:
+      self.cycle_scene(-1)
     elif button == 5:
       self.cycle_color(1)
     elif button == 4:
       self.cycle_color(-1)
 
   def delay_off_night_cb(self, kwargs):
-    self.turn_off("group.all_lights")
+    self.scene_off()
 
   #
   # HELP FUNCTIONS
@@ -239,18 +175,17 @@ class Modes(appapi.AppDaemon):
     val = self.color_cycle_value 
 
     if val == 0:
-      self.light_1.set_brightness(0)
+      self.turn_off("light.light_1")
     elif val == 1:
-      self.light_1.set_brightness(100)
-      self.light_1.set_temp(500)
+      self.turn_on("light.light_1", brightness=100, color_temp=500)
     elif val == 2:
-      self.light_1.set_temp(319)
+      self.turn_on("light.light_1", brightness=100, color_temp=319)
     elif val == 3:
-      self.light_1.set_color([255,0,0])
+      self.turn_on("light.light_1", brightness=100, rgb_color = [255,0,0])
     elif val == 4:
-      self.light_1.set_color([0,255,0])
+      self.turn_on("light.light_1", brightness=100, rgb_color = [0,255,0])
     elif val == 5:
-      self.light_1.set_color([0,0,255])
+      self.turn_on("light.light_1", brightness=100, rgb_color = [0,0,255])
     else:
       pass
 
@@ -277,16 +212,15 @@ class Modes(appapi.AppDaemon):
     else:
       pass
 
-
   def toggle_lamps(self):
       if self.lamp_state_on:
         self.turn_off("switch.livingroom_shelf")
         self.turn_off("group.all_lights")
-        self.light_1.turn_off()
+        self.turn_off("light.light_1")
       else:
         self.turn_on("switch.livingroom_shelf")
         self.turn_on("group.all_lights")
-        self.light_1.turn_on()
+        self.turn_on("light.light_1")
       self.lamp_state_on = not(self.lamp_state_on)
   
   def morning(self):
@@ -298,16 +232,14 @@ class Modes(appapi.AppDaemon):
     self.log(self.visitor_present())
 
     if datetime.datetime.today().weekday() < 5 and not(self.visitor_present()):
-      self.light_1.set_brightness(2)
-      self.light_1.set_level_slow(100, 1800)
+      self.turn_on("light.light_1", transition = 1800, brightness=100, color_temp=319)
 
   def day(self):
     self.log("Switching mode to Day")
     self.select_option("input_select.house_mode", "Day")
     self.notify("Switching mode to Day")
 
-    self.turn_off("switch.livingroom_shelf")
-    self.turn_off("group.all_lights")
+    self.scene_off()
 
   def evening(self):
     self.log("Switching mode to Evening")
@@ -315,8 +247,7 @@ class Modes(appapi.AppDaemon):
     self.notify("Switching mode to Evening")
 
     if self.someone_is_home():
-      self.turn_on("switch.livingroom_shelf")
-      self.turn_on("group.all_lights")
+      self.scene_3()
 
   def night(self):
     self.log("Switching mode to Night")

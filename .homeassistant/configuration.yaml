@@ -120,14 +120,6 @@ influxdb:
     username: home-assistant
     password: !secret http
 
-binary_sensor:
-  - platform: command_line
-    command: ping -c 1 192.168.0.27|grep "1 packets transmitted, 1 received"|wc -l
-    scan_interval: 5
-    payload_on: 1
-    payload_off: 0
-    name: TV
-
 input_boolean:
     visitor_present:
         name: Visitor
