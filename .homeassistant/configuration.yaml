@@ -61,6 +61,7 @@ sensor:
     command: !secret ssh
     name: linnebo_temp
     unit_of_measurement: "°C"
+    scan_interval: 600
 
 group: !include groups.yaml
 automation: !include automations.yaml

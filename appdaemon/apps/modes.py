@@ -177,15 +177,15 @@ class Modes(appapi.AppDaemon):
     if val == 0:
       self.turn_off("light.light_1")
     elif val == 1:
-      self.turn_on("light.light_1", brightness=100, color_temp=500)
+      self.turn_on("light.light_1", brightness_pct=100, color_temp=500)
     elif val == 2:
-      self.turn_on("light.light_1", brightness=100, color_temp=319)
+      self.turn_on("light.light_1", brightness_pct=100, color_temp=319)
     elif val == 3:
-      self.turn_on("light.light_1", brightness=100, rgb_color = [255,0,0])
+      self.turn_on("light.light_1", brightness_pct=100, rgb_color = [255,0,0])
     elif val == 4:
-      self.turn_on("light.light_1", brightness=100, rgb_color = [0,255,0])
+      self.turn_on("light.light_1", brightness_pct=100, rgb_color = [0,255,0])
     elif val == 5:
-      self.turn_on("light.light_1", brightness=100, rgb_color = [0,0,255])
+      self.turn_on("light.light_1", brightness_pct=100, rgb_color = [0,0,255])
     else:
       pass
 
@@ -232,7 +232,7 @@ class Modes(appapi.AppDaemon):
     self.log(self.visitor_present())
 
     if datetime.datetime.today().weekday() < 5 and not(self.visitor_present()):
-      self.turn_on("light.light_1", transition = 1800, brightness=100, color_temp=319)
+      self.turn_on("light.light_1", transition = 1800, brightness_pct=100, color_temp=319)
 
   def day(self):
     self.log("Switching mode to Day")
