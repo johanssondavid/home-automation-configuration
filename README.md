@@ -100,6 +100,17 @@ sudo journalctl -f -u home-assistant@homeassistant
 
 deconz https://github.com/dresden-elektronik/deconz-rest-plugin
 
+'''
+wget https://www.dresden-elektronik.de/deconz/ubuntu/beta/deconz-2.04.99-qt5.deb
+sudo dpkg -i deconz-2.04.99-qt5.deb
+sudo apt-get install -f
+sudo vim /etc/systemd/system/deconz.service
+# Set user=root, bad idea?
+sudo systemctl daemon-reload
+sudo systemctl enable deconz
+'''
+
+
 
 https://home-assistant.io/docs/installation/raspberry-pi/
 https://home-assistant.io/docs/autostart/systemd/
