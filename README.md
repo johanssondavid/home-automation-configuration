@@ -77,5 +77,9 @@ $ sudo systemctl start home-assistant@homeassistant
 Check log
 $ sudo journalctl -f -u home-assistant@homeassistant
 
+
+deconz https://github.com/dresden-elektronik/deconz-rest-plugin
+
+
 https://home-assistant.io/docs/installation/raspberry-pi/
 https://home-assistant.io/docs/autostart/systemd/
