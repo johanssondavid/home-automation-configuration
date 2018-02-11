@@ -79,9 +79,9 @@ WantedBy=multi-user.target
 ```
 
 You need to reload systemd to make the daemon aware of the new configuration.
-'''
+```
 sudo systemctl --system daemon-reload
-'''
+```
 
 To have Home Assistant start automatically at boot, enable the service.
 ```
