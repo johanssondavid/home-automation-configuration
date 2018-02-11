@@ -50,3 +50,32 @@ $ git remote add origin https://github.com/johanssondavid/home-automation-config
 $ git fetch
 $ git checkout origin/master
 
+
+$ sudo nano -w /etc/systemd/system/home-assistant@homeassistant.service
+[Unit]
+Description=Home Assistant
+After=network-online.target
+
+[Service]
+Type=simple
+User=%i
+ExecStart=/srv/homeassistant/bin/hass -c "/home/homeassistant/.homeassistant"
+
+[Install]
+WantedBy=multi-user.target
+
+
+You need to reload systemd to make the daemon aware of the new configuration.
+$ sudo systemctl --system daemon-reload
+
+To have Home Assistant start automatically at boot, enable the service.
+$ sudo systemctl enable home-assistant@homeassistant
+
+To disable the automatic start, use this command.
+$ sudo systemctl start home-assistant@homeassistant
+
+Check log
+$ sudo journalctl -f -u home-assistant@homeassistant
+
+https://home-assistant.io/docs/installation/raspberry-pi/
+https://home-assistant.io/docs/autostart/systemd/
