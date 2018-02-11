@@ -23,7 +23,10 @@ SW
 Installation
 
 Install the dependencies.
-$ sudo apt-get install python3-pip python3-venv
+
+'''
+sudo apt-get install python3-pip python3-venv
+'''
 
 Add an account for Home Assistant called homeassistant. Since this account is only for running Home Assistant the extra arguments of -rm is added to create a system account and create a home directory.
 $ sudo useradd -rm homeassistant
@@ -66,7 +69,9 @@ WantedBy=multi-user.target
 
 
 You need to reload systemd to make the daemon aware of the new configuration.
-$ sudo systemctl --system daemon-reload
+'''
+sudo systemctl --system daemon-reload
+'''
 
 To have Home Assistant start automatically at boot, enable the service.
 $ sudo systemctl enable home-assistant@homeassistant
