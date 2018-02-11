@@ -42,5 +42,11 @@ $ source bin/activate
 
 Once you have activated the virtual environment you will notice the prompt change and then you can install Home Assistant (don't be afraid of the errors, seems to work anyway).
 
-(homeassistant) homeassistant@raspberrypi:/srv/homeassistant $ pip3 install homeassistant
+$ pip3 install homeassistant
+
+$ cd ~
+$ git init
+$ git remote add origin https://github.com/johanssondavid/home-automation-configuration
+$ git fetch
+$ git checkout origin/master
 
