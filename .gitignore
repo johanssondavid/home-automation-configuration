@@ -8,4 +8,6 @@ __pycache__
 compiled
 *.db
 *.log
+*.deb
+*.jar
 tts

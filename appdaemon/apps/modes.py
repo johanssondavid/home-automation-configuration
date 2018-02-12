@@ -75,7 +75,9 @@ class Modes(appapi.AppDaemon):
 
   # CALLBACKS
   def motion_cb(self, entity, attribute, old, new, kwargs):
-    if new == "1":
+    self.log(new)
+    self.log(self.get_mode())
+    if new == "on":
       if self.get_mode() == "Night":
         self.motion_timer = time.time() + MOTION_DELAY
         self.run_in(self.lights_off_after_motion, MOTION_DELAY + 5)
