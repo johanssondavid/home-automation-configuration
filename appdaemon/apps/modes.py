@@ -23,14 +23,14 @@ class Modes(appapi.AppDaemon):
 
     # Create some callbacks
     self.listen_event(self.mode_event, "MODE_CHANGE")
-    self.listen_event(self.button_pressed_cb, "REMOTE_PRESSED")
+    self.listen_event(self.deconz_event_cb, "deconz_event")
     self.listen_event(self.harmony_pressed_cb, "HARMONY_PRESSED")
 
     self.listen_state(self.everyone_left_home_cb, "group.all_devices", old = "home", new = "not_home")
     self.listen_state(self.someone_came_home_cb, "group.all_devices", old = "not_home", new = "home")
 
-    self.listen_state(self.motion_cb, "sensor.motion")
-    self.listen_state(self.motion_cb, "sensor.motion_2")
+    self.listen_state(self.motion_cb, "binary_sensor.tradfri_motion_sensor_")
+    self.listen_state(self.motion_cb, "binary_sensor.tradfri_motion_sensor__2")
 
     # alarms
     runtime = datetime.time(5, 30, 0)
@@ -139,19 +139,19 @@ class Modes(appapi.AppDaemon):
     if button == "4_on":
       self.cycle_color(-1)
 
-  def button_pressed_cb(self, event_name, data, kwargs):
-    button = data["button"]
-    self.log("button " + str(button) + " pressed")
+  def deconz_event_cb(self, event_name, data, kwargs):
+    event =  data["event"]
+    self.log("button " + str(event) + " pressed")
 
-    if button == 1:
+    if event == 1002:
       self.toggle_lamps()
-    elif button == 2:
+    elif event == 2002:
       self.cycle_scene(1)
-    elif button == 3:
+    elif event == 3002:
       self.cycle_scene(-1)
-    elif button == 5:
+    elif event == 5002:
       self.cycle_color(1)
-    elif button == 4:
+    elif event == 4002:
       self.cycle_color(-1)
 
   def delay_off_night_cb(self, kwargs):

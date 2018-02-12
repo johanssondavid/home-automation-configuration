@@ -38,7 +38,7 @@ updater:
   # include_used_components: true
 
 # Discover some devices automatically
-discovery:
+#discovery:
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
@@ -83,11 +83,6 @@ switch:
       command_on: curl http://192.168.0.15/a_on
       command_off: curl http://192.168.0.15/a_off
 
-
-tradfri:
-  host: 192.168.0.22
-  allow_tradfri_groups: false
-
 volvooncall:
   username: !secret volvo_on_call_user
   password: !secret volvo_on_call_pw
@@ -97,8 +92,6 @@ device_tracker:
     hosts: 192.168.0.1/24
     consider_home: 900
     track_new_devices: no
-
-ios:
 
 input_select:
   house_mode:
@@ -115,11 +108,11 @@ apple_tv:
     login_id: 00000000-3f5b-b3eb-3fa8-fb3ef8224211
     name: Apple TV
 
-influxdb:
-    host: 127.0.0.1
-    database: home_assistant
-    username: home-assistant
-    password: !secret http
+#influxdb:
+#    host: 127.0.0.1
+#    database: home_assistant
+#    username: home-assistant
+#    password: !secret http
 
 input_boolean:
     visitor_present:
@@ -138,3 +131,6 @@ weblink:
         url: http://192.168.0.10:8124/
 
 scene: !include_dir_list scenes
+
+deconz:
+  host: 127.0.0.1

@@ -6,23 +6,23 @@ entities:
     state: on
     brightness: 51
     color_temp: 370
-  light.fonster1:
+  light.fonster_1:
     state: on
     brightness: 51
     color_temp: 370
   light.sanglampa:
     state: off
-  light.koksfonster:
+  light.kok_fonster:
     state: on
     brightness: 51
     color_temp: 351
   light.light_1:
     state: off
-  light.fonster_sovrum:
+  light.sovrum_fonster:
     state: off
   light.hall:
     state: on
     brightness: 51
     color_temp: 366
-  light.fonster2:
+  light.fonster_2:
     state: off

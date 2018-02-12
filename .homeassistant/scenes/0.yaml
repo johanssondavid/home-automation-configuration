@@ -4,17 +4,17 @@ entities:
     state: off
   light.hall:
     state: off
-  light.koksfonster:
+  light.kok_fonster:
     state: off
-  light.fonster1:
+  light.fonster_1:
     state: off
-  light.fonster_sovrum:
+  light.sovrum_fonster:
     state: off
   switch.livingroom_shelf:
     state: off
   light.sanglampa:
     state: off
-  light.fonster2:
+  light.fonster_2:
     state: off
   light.golvlampa:
     state: off

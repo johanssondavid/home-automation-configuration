@@ -6,7 +6,7 @@ entities:
     state: on
     brightness: 191
     color_temp: 370
-  light.fonster1:
+  light.fonster_1:
     state: on
     brightness: 191
     color_temp: 370
@@ -14,7 +14,7 @@ entities:
     state: on
     brightness: 191
     color_temp: 348
-  light.koksfonster:
+  light.kok_fonster:
     state: on
     brightness: 191
     color_temp: 351
@@ -22,7 +22,7 @@ entities:
     state: on
     brightness: 63
     color_temp: 500
-  light.fonster_sovrum:
+  light.sovrum_fonster:
     state: on
     brightness: 191
     color_temp: 457
@@ -30,7 +30,7 @@ entities:
     state: on
     brightness: 191
     color_temp: 366
-  light.fonster2:
+  light.fonster_2:
     state: on
     brightness: 191
     color_temp: 370
