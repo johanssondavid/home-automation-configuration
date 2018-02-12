@@ -107,6 +107,7 @@ sudo dpkg -i deconz-2.04.99-qt5.deb
 sudo apt-get install -f
 sudo vim /etc/systemd/system/deconz.service
 # Set user=root, bad idea?
+# Set --upnp=0
 sudo systemctl daemon-reload
 sudo systemctl enable deconz
 ```
@@ -138,6 +139,41 @@ WantedBy=multi-user.target
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable appdaemon@appdaemon.service --now
+```
+
+
+ha bridge (https://github.com/bwssytems/ha-bridge, https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-get-on-ubuntu-16-04)
+
+```
+sudo apt-get install default-jre
+sudo su -s /bin/bash homeassistant
+cd
+mkdir habridge
+cd habridge
+wget https://github.com/bwssytems/ha-bridge/releases/download/v5.1.0/ha-bridge-5.1.0.jar
+exit
+sudo vim /etc/systemd/system/habridge.service
+```
+
+```
+[Unit]
+Description=HA Bridge
+Wants=network.target
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/homeassistant/habridge
+ExecStart=/usr/bin/java -jar -Dconfig.file=/home/pi/habridge/data/habridge.config /home/pi/habridge/ha-bridge-5.1.0.jar
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```
+sudo systemctl daemon-reload
+sudo systemctl enable habridge.service
+sudo systemctl start habridge.service
 ```
 
 https://home-assistant.io/docs/installation/raspberry-pi/
