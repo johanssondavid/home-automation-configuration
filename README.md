@@ -111,6 +111,9 @@ sudo systemctl enable deconz
 ```
 
 
+Configure dexonz in the gui. Follow the instructions (unlock gateway in deconz)
+
+
 
 https://home-assistant.io/docs/installation/raspberry-pi/
 https://home-assistant.io/docs/autostart/systemd/
