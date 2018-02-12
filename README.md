@@ -50,6 +50,7 @@ source bin/activate
 Once you have activated the virtual environment you will notice the prompt change and then you can install Home Assistant (don't be afraid of the errors, seems to work anyway).
 ```
 pip3 install homeassistant
+pip3 install DTLSSocket
 ```
 
 Checkout the configuration from github
