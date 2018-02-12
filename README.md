@@ -99,7 +99,7 @@ Check log
 sudo journalctl -f -u home-assistant@homeassistant
 ```
 
-deconz https://github.com/dresden-elektronik/deconz-rest-plugin
+deconz (https://github.com/dresden-elektronik/deconz-rest-plugin, https://github.com/dresden-elektronik/deconz-rest-plugin/issues/274)
 
 ```
 wget https://www.dresden-elektronik.de/deconz/ubuntu/beta/deconz-2.04.99-qt5.deb
