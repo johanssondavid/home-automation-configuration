@@ -117,7 +117,7 @@ Configure dexonz in the gui. Follow the instructions (unlock gateway in deconz)
 
 Appdaemon (http://appdaemon.readthedocs.io/en/latest/INSTALL.html)
 ```
-sudo pip3 install --pre appdaemon
+sudo pip3 install 'appdaemon<3.0'
 ```
 
 ```
