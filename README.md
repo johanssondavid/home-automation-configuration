@@ -79,18 +79,9 @@ ExecStart=/srv/homeassistant/bin/hass -c "/home/homeassistant/.homeassistant"
 WantedBy=multi-user.target
 ```
 
-You need to reload systemd to make the daemon aware of the new configuration.
 ```
 sudo systemctl --system daemon-reload
-```
-
-To have Home Assistant start automatically at boot, enable the service.
-```
 sudo systemctl enable home-assistant@homeassistant
-```
-
-To disable the automatic start, use this command.
-```
 sudo systemctl start home-assistant@homeassistant
 ```
 
