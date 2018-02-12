@@ -115,6 +115,30 @@ sudo systemctl enable deconz
 Configure dexonz in the gui. Follow the instructions (unlock gateway in deconz)
 
 
+Appdaemon (http://appdaemon.readthedocs.io/en/latest/INSTALL.html)
+```
+sudo pip3 install --pre appdaemon
+```
+
+```
+sudo vim /etc/systemd/system/appdaemon@appdaemon.service
+```
+```
+[Unit]
+Description=AppDaemon
+After=home-assistant@homeassistant.service
+[Service]
+Type=simple
+User=homeassistant
+ExecStart=/usr/local/bin/appdaemon -c /home/homeassistant/appdaemon
+[Install]
+WantedBy=multi-user.target
+```
+
+```
+sudo systemctl daemon-reload
+sudo systemctl enable appdaemon@appdaemon.service --now
+```
 
 https://home-assistant.io/docs/installation/raspberry-pi/
 https://home-assistant.io/docs/autostart/systemd/
