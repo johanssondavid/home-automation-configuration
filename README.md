@@ -104,30 +104,47 @@ sudo journalctl -f -u home-assistant@homeassistant
 * https://github.com/dresden-elektronik/deconz-rest-plugin
 * https://github.com/dresden-elektronik/deconz-rest-plugin/issues/274
 
+For raspberry pi installation download and install this package instead http://www.dresden-elektronik.de/rpi/deconz-dev/deconz-dev-2.05.02.deb
+
 ```
 wget https://www.dresden-elektronik.de/deconz/ubuntu/beta/deconz-2.04.99-qt5.deb
 sudo dpkg -i deconz-2.04.99-qt5.deb
 sudo apt-get install -f
 sudo vim /etc/systemd/system/deconz.service
-# Set user=root, bad idea?
-# Set --upnp=0
-sudo systemctl daemon-reload
-sudo systemctl enable deconz
 ```
 
+```
+[Unit]
+Description=deCONZ: ZigBee gateway -- REST API
+Wants=deconz-init.service deconz-update.service
 
-Configure deconz in the gui. Follow the instructions (unlock gateway in deconz)
+[Service]
+User=root
+ExecStart=/usr/bin/deCONZ -platform minimal --http-port=80 --upnp=0
+Restart=on-failure
+StartLimitInterval=60
+AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_KILL CAP_SYS_BOOT CAP_SYS_TIME
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```
+sudo systemctl daemon-reload
+sudo systemctl enable deconz
+sudo systemctl start deconz
+```
+
+Configure deconz in the gui. Follow the instructions (unlock gateway in deconz). Connect with http on port 80.
 
 
 ## Appdaemon
 * http://appdaemon.readthedocs.io/en/latest/INSTALL.html
 ```
 sudo pip3 install 'appdaemon<3.0'
-```
-
-```
 sudo vim /etc/systemd/system/appdaemon@appdaemon.service
 ```
+
 ```
 [Unit]
 Description=AppDaemon
@@ -142,7 +159,8 @@ WantedBy=multi-user.target
 
 ```
 sudo systemctl daemon-reload
-sudo systemctl enable appdaemon@appdaemon.service --now
+sudo systemctl enable appdaemon@appdaemon.service 
+sudo systemctl start appdaemon@appdaemon
 ```
 
 
@@ -169,8 +187,9 @@ After=network.target
 
 [Service]
 Type=simple
+User=root
 WorkingDirectory=/home/homeassistant/habridge
-ExecStart=/usr/bin/java -jar -Dconfig.file=/home/pi/habridge/data/habridge.config /home/pi/habridge/ha-bridge-5.1.0.jar
+ExecStart=/usr/bin/java -jar -Djava.net.preferIPv4Stack=true -Dserver.port=8124 -Dconfig.file=/home/homeassistant/habridge/data/habridge.config /home/homeassistant/habridge/ha-bridge-5.1.0.jar
 
 [Install]
 WantedBy=multi-user.target
@@ -182,4 +201,5 @@ sudo systemctl enable habridge.service
 sudo systemctl start habridge.service
 ```
 
+Import the configuration file in the HA Bridge gui. 
 
