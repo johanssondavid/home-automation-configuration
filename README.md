@@ -8,7 +8,7 @@ I started running on a Raspberry pi 2 but found it unstable and slow. Instead in
 * Conbee USB stick
 * ESP8266 with 433 mhz transmitter
 * IKEA Trådfri lamps
-* ~~IKEA GW~~substituted with conbee :thumbsup:
+* ~~IKEA GW~~ substituted with conbee :thumbsup:
 * IKEA Trådfri motion sensors
 * IKEA Trådfri remote control
 * Philips Hue RGB Lamp
@@ -17,7 +17,7 @@ I started running on a Raspberry pi 2 but found it unstable and slow. Instead in
 ## SW
 * Home Assistant
 * AppDaemon
-* ~~Node red~~not needed with newer Home Assistant :thumbsup:
+* ~~Node red~~ not needed with newer Home Assistant :thumbsup:
 * Deconz
 * HA Bridge
 
