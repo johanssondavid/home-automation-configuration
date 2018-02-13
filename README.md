@@ -1,12 +1,14 @@
 # home-automation-configuration
 My home assistant configuration
 
+I started running on a Raspberry pi 2 but found it unstable and slow. Instead installed in on a virtual machine running Ubuntu 16.04 LTS
+
 ## HW
-* Rasperry Pi 2
+* Virtual machine
 * Conbee USB stick
 * ESP8266 with 433 mhz transmitter
 * IKEA Trådfri lamps
-* IKEA GW
+* ~~IKEA GW~~substituted with conbee :thumbsup:
 * IKEA Trådfri motion sensors
 * IKEA Trådfri remote control
 * Philips Hue RGB Lamp
@@ -15,7 +17,7 @@ My home assistant configuration
 ## SW
 * Home Assistant
 * AppDaemon
-* Node red
+* ~~Node red~~not needed with newer Home Assistant :thumbsup:
 * Deconz
 * HA Bridge
 
