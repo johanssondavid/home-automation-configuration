@@ -1,7 +1,7 @@
 # home-automation-configuration
 My home assistant configuration
 
-HW
+## HW
 * Rasperry Pi 2
 * Conbee USB stick
 * ESP8266 with 433 mhz transmitter
@@ -12,7 +12,7 @@ HW
 * Philips Hue RGB Lamp
 * Logitech harmony remote
 
-SW
+## SW
 * Home Assistant
 * AppDaemon
 * Node red
@@ -20,7 +20,11 @@ SW
 * HA Bridge
 
 
-Installation
+# Installation
+
+## Home Assistant
+* https://home-assistant.io/docs/installation/raspberry-pi/
+* https://home-assistant.io/docs/autostart/systemd/
 
 Install the dependencies.
 ```
@@ -90,7 +94,9 @@ Check log
 sudo journalctl -f -u home-assistant@homeassistant
 ```
 
-deconz (https://github.com/dresden-elektronik/deconz-rest-plugin, https://github.com/dresden-elektronik/deconz-rest-plugin/issues/274)
+##deconz
+* https://github.com/dresden-elektronik/deconz-rest-plugin
+* https://github.com/dresden-elektronik/deconz-rest-plugin/issues/274
 
 ```
 wget https://www.dresden-elektronik.de/deconz/ubuntu/beta/deconz-2.04.99-qt5.deb
@@ -104,10 +110,11 @@ sudo systemctl enable deconz
 ```
 
 
-Configure dexonz in the gui. Follow the instructions (unlock gateway in deconz)
+Configure deconz in the gui. Follow the instructions (unlock gateway in deconz)
 
 
-Appdaemon (http://appdaemon.readthedocs.io/en/latest/INSTALL.html)
+## Appdaemon
+* http://appdaemon.readthedocs.io/en/latest/INSTALL.html
 ```
 sudo pip3 install 'appdaemon<3.0'
 ```
@@ -133,7 +140,9 @@ sudo systemctl enable appdaemon@appdaemon.service --now
 ```
 
 
-ha bridge (https://github.com/bwssytems/ha-bridge, https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-get-on-ubuntu-16-04)
+## HA-Bridge
+* https://github.com/bwssytems/ha-bridge
+* https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-get-on-ubuntu-16-04
 
 ```
 sudo apt-get install default-jre
@@ -167,5 +176,4 @@ sudo systemctl enable habridge.service
 sudo systemctl start habridge.service
 ```
 
-https://home-assistant.io/docs/installation/raspberry-pi/
-https://home-assistant.io/docs/autostart/systemd/
+
