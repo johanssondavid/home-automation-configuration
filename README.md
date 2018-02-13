@@ -94,7 +94,7 @@ Check log
 sudo journalctl -f -u home-assistant@homeassistant
 ```
 
-##deconz
+## deconz
 * https://github.com/dresden-elektronik/deconz-rest-plugin
 * https://github.com/dresden-elektronik/deconz-rest-plugin/issues/274
 
