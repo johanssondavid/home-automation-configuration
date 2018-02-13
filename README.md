@@ -68,8 +68,9 @@ git fetch
 git checkout origin/master
 ```
 
+I had to ad a delay before starting Home Assistant so deconz had time to start before. After and Wants was not enough.
 ```
-sudo nano -w /etc/systemd/system/home-assistant@homeassistant.service
+sudo vim /etc/systemd/system/home-assistant@homeassistant.service
 ```
 ```
 [Unit]
@@ -77,9 +78,12 @@ Description=Home Assistant
 After=network-online.target
 
 [Service]
+ExecStartPre=/bin/sleep 30
 Type=simple
 User=%i
 ExecStart=/srv/homeassistant/bin/hass -c "/home/homeassistant/.homeassistant"
+After=deconz
+Wants=deconz
 
 [Install]
 WantedBy=multi-user.target
