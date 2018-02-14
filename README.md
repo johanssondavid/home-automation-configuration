@@ -1,15 +1,18 @@
 # home-automation-configuration
 Bye bye old stuff. Hello docker! :thumbsup:
 
-* Install docker (https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-* Install portainer (https://portainer.io/install.html)
-
+1. Install docker - https://docs.docker.com/install/linux/docker-ce/ubuntu/
+2. Install portainer - https://portainer.io/install.html
+3. Fetch from git
 ```
 git clone ...
 mkdir home-automation-configuration/appdaemon/compiled
 mkdir home-automation-configuration/appdaemon/compiled/css
 mkdir home-automation-configuration/appdaemon/compiled/javascript
 ```
+
+4. (Re)create secrets.yaml files
+5. Start the containers below
 
 ## deconz
 ```
