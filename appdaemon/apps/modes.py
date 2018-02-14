@@ -29,11 +29,11 @@ class Modes(appapi.AppDaemon):
     self.listen_state(self.everyone_left_home_cb, "group.all_devices", old = "home", new = "not_home")
     self.listen_state(self.someone_came_home_cb, "group.all_devices", old = "not_home", new = "home")
 
-    self.listen_state(self.motion_cb, "binary_sensor.tradfri_motion_sensor_")
-    self.listen_state(self.motion_cb, "binary_sensor.tradfri_motion_sensor__2")
+    self.listen_state(self.motion_cb, "binary_sensor.tradfri_motion_sensor__3")
+    self.listen_state(self.motion_cb, "binary_sensor.tradfri_motion_sensor__4")
 
     # alarms
-    runtime = datetime.time(5, 30, 0)
+    runtime = datetime.time(5, 15, 0)
     self.run_daily(self.morning_cb, runtime)
 
     # sunset/sunrise
@@ -234,7 +234,7 @@ class Modes(appapi.AppDaemon):
     self.log(self.visitor_present())
 
     if datetime.datetime.today().weekday() < 5 and not(self.visitor_present()):
-      self.turn_on("light.light_1", transition = 1800, brightness_pct=100, color_temp=319)
+      self.turn_on("light.light_1", transition = 1800, brightness_pct=80, color_temp=319)
 
   def day(self):
     self.log("Switching mode to Day")

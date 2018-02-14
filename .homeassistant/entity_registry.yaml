@@ -31,3 +31,12 @@ light.fonster_1:
 light.sovrum_fonster:
   platform: deconz
   unique_id: 00:0b:57:ff:fe:ca:07:41-01
+binary_sensor.tradfri_motion_sensor__3:
+  platform: deconz
+  unique_id: 00:0b:57:ff:fe:94:6a:03-01-1000
+binary_sensor.tradfri_motion_sensor__4:
+  platform: deconz
+  unique_id: 00:0b:57:ff:fe:93:5b:ab-01-1000
+sensor.remote_control_3_battery_level:
+  platform: deconz
+  unique_id: 00:0b:57:ff:fe:52:14:ad-01-1000
