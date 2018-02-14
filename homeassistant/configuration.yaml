@@ -38,7 +38,7 @@ updater:
   # include_used_components: true
 
 # Discover some devices automatically
-#discovery:
+discovery:
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
@@ -133,4 +133,6 @@ weblink:
 scene: !include_dir_list scenes
 
 deconz:
-  host: 127.0.0.1
+    host: 127.0.0.1
+    api_key: 126A648B5D
+    port: 8080
