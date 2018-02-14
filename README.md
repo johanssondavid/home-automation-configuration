@@ -9,7 +9,7 @@ sudo docker run -d --name="deconz" --net="host" -e TZ="Europe/Berlin" -p 8080:80
 
 ## Home Assistant
 ```
-sudo docker run -d --name="home-assistant" -v /home/david/home-automation-configuration/homeassistant -v /etc/localtime:/etc/localtime:ro --net=host homeassistant/home-assistant
+sudo docker run -d --name="home-assistant" -v /home/david/home-automation-configuration/homeassistant:/config -v /etc/localtime:/etc/localtime:ro --net=host homeassistant/home-assistant
 ```
 
 ## HA Bridge
