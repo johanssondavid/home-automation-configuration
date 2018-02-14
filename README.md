@@ -1,26 +1,32 @@
 # home-automation-configuration
 My home assistant configuration
 
-HW
-* Rasperry Pi 2
+I started running on a Raspberry pi 2 but found it unstable and slow. Instead installed in on a virtual machine running Ubuntu 16.04 LTS
+
+## HW
+* Virtual machine
 * Conbee USB stick
 * ESP8266 with 433 mhz transmitter
 * IKEA Trådfri lamps
-* IKEA GW
+* ~~IKEA GW~~ substituted with conbee :thumbsup:
 * IKEA Trådfri motion sensors
 * IKEA Trådfri remote control
 * Philips Hue RGB Lamp
 * Logitech harmony remote
 
-SW
+## SW
 * Home Assistant
 * AppDaemon
-* Node red
+* ~~Node red~~ not needed with newer Home Assistant :thumbsup:
 * Deconz
 * HA Bridge
 
 
-Installation
+# Installation
+
+## Home Assistant
+* https://home-assistant.io/docs/installation/raspberry-pi/
+* https://home-assistant.io/docs/autostart/systemd/
 
 Install the dependencies.
 ```
@@ -62,8 +68,9 @@ git fetch
 git checkout origin/master
 ```
 
+I had to ad a delay before starting Home Assistant so deconz had time to start before. After and Wants was not enough.
 ```
-sudo nano -w /etc/systemd/system/home-assistant@homeassistant.service
+sudo vim /etc/systemd/system/home-assistant@homeassistant.service
 ```
 ```
 [Unit]
@@ -71,26 +78,20 @@ Description=Home Assistant
 After=network-online.target
 
 [Service]
+ExecStartPre=/bin/sleep 30
 Type=simple
 User=%i
 ExecStart=/srv/homeassistant/bin/hass -c "/home/homeassistant/.homeassistant"
+After=deconz
+Wants=deconz
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-You need to reload systemd to make the daemon aware of the new configuration.
 ```
 sudo systemctl --system daemon-reload
-```
-
-To have Home Assistant start automatically at boot, enable the service.
-```
 sudo systemctl enable home-assistant@homeassistant
-```
-
-To disable the automatic start, use this command.
-```
 sudo systemctl start home-assistant@homeassistant
 ```
 
@@ -99,31 +100,51 @@ Check log
 sudo journalctl -f -u home-assistant@homeassistant
 ```
 
-deconz https://github.com/dresden-elektronik/deconz-rest-plugin
+## deconz
+* https://github.com/dresden-elektronik/deconz-rest-plugin
+* https://github.com/dresden-elektronik/deconz-rest-plugin/issues/274
+
+For raspberry pi installation download and install this package instead http://www.dresden-elektronik.de/rpi/deconz-dev/deconz-dev-2.05.02.deb
 
 ```
 wget https://www.dresden-elektronik.de/deconz/ubuntu/beta/deconz-2.04.99-qt5.deb
 sudo dpkg -i deconz-2.04.99-qt5.deb
 sudo apt-get install -f
 sudo vim /etc/systemd/system/deconz.service
-# Set user=root, bad idea?
-# Set --upnp=0
+```
+
+```
+[Unit]
+Description=deCONZ: ZigBee gateway -- REST API
+Wants=deconz-init.service deconz-update.service
+
+[Service]
+User=root
+ExecStart=/usr/bin/deCONZ -platform minimal --http-port=80 --upnp=0
+Restart=on-failure
+StartLimitInterval=60
+AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_KILL CAP_SYS_BOOT CAP_SYS_TIME
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```
 sudo systemctl daemon-reload
 sudo systemctl enable deconz
+sudo systemctl start deconz
 ```
 
+Configure deconz in the gui. Follow the instructions (unlock gateway in deconz). Connect with http on port 80.
 
-Configure dexonz in the gui. Follow the instructions (unlock gateway in deconz)
 
-
-Appdaemon (http://appdaemon.readthedocs.io/en/latest/INSTALL.html)
+## Appdaemon
+* http://appdaemon.readthedocs.io/en/latest/INSTALL.html
 ```
 sudo pip3 install 'appdaemon<3.0'
-```
-
-```
 sudo vim /etc/systemd/system/appdaemon@appdaemon.service
 ```
+
 ```
 [Unit]
 Description=AppDaemon
@@ -138,11 +159,14 @@ WantedBy=multi-user.target
 
 ```
 sudo systemctl daemon-reload
-sudo systemctl enable appdaemon@appdaemon.service --now
+sudo systemctl enable appdaemon@appdaemon.service 
+sudo systemctl start appdaemon@appdaemon
 ```
 
 
-ha bridge (https://github.com/bwssytems/ha-bridge, https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-get-on-ubuntu-16-04)
+## HA-Bridge
+* https://github.com/bwssytems/ha-bridge
+* https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-get-on-ubuntu-16-04
 
 ```
 sudo apt-get install default-jre
@@ -163,8 +187,9 @@ After=network.target
 
 [Service]
 Type=simple
+User=root
 WorkingDirectory=/home/homeassistant/habridge
-ExecStart=/usr/bin/java -jar -Dconfig.file=/home/pi/habridge/data/habridge.config /home/pi/habridge/ha-bridge-5.1.0.jar
+ExecStart=/usr/bin/java -jar -Djava.net.preferIPv4Stack=true -Dserver.port=8124 -Dconfig.file=/home/homeassistant/habridge/data/habridge.config /home/homeassistant/habridge/ha-bridge-5.1.0.jar
 
 [Install]
 WantedBy=multi-user.target
@@ -176,5 +201,5 @@ sudo systemctl enable habridge.service
 sudo systemctl start habridge.service
 ```
 
-https://home-assistant.io/docs/installation/raspberry-pi/
-https://home-assistant.io/docs/autostart/systemd/
+Import the configuration file in the HA Bridge gui. 
+
