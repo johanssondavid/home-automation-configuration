@@ -13,8 +13,9 @@ sudo docker run -d --name="home-assistant" -v /home/david/home-automation-config
 ```
 
 ## HA Bridge
-TODO
-
+```
+sudo docker run --name ha-bridge -d --net=host -v /home/david/home-automation-configuration/habridge/data/:/bridge/data -p 8124:8080 bios/docker-alexa-ha-bridge
+```
 
 ## AppDaemon
 TODO
