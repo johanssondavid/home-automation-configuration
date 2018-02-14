@@ -1,6 +1,15 @@
 # home-automation-configuration
-Bye bye old stuff. Hello docker
+Bye bye old stuff. Hello docker! :thumbsup:
 
+* Install docker (https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+* Install portainer (https://portainer.io/install.html)
+
+```
+git clone ...
+mkdir home-automation-configuration/appdaemon/compiled
+mkdir home-automation-configuration/appdaemon/compiled/css
+mkdir home-automation-configuration/appdaemon/compiled/javascript
+```
 
 ## deconz
 ```
@@ -18,4 +27,6 @@ sudo docker run -d --net=host --name ha-bridge -v /home/david/home-automation-co
 ```
 
 ## AppDaemon
-TODO
+```
+sudo docker run -d --net=host --name appdaemon -v /home/david/home-automation-configuration/appdaemon/:/conf -p 5050:5050 johanssondavid/appdaemon2
+```
