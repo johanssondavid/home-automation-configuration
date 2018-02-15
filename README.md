@@ -6,8 +6,13 @@ Bye bye old stuff. Hello docker! :thumbsup:
 
 ## Installation
 1. Install docker - https://docs.docker.com/install/linux/docker-ce/ubuntu/
-2. Install portainer - https://portainer.io/install.html
-3. Fetch from git
+2. Install docker composer
+```
+sudo apt-get install python-pip
+```
+
+3. Install portainer - https://portainer.io/install.html
+4. Fetch from git
 ```
 git clone ...
 mkdir home-automation-configuration/appdaemon/compiled
@@ -15,8 +20,8 @@ mkdir home-automation-configuration/appdaemon/compiled/css
 mkdir home-automation-configuration/appdaemon/compiled/javascript
 ```
 
-4. (Re)create secrets.yaml files
-5. Start the containers below
+5. (Re)create secrets.yaml files
+6. Start the containers below
 
 ### deconz
 ```
