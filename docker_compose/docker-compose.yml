@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  homeassistant:
+    image: homeassistant/home-assistant
+    container_name: homeassistant
+    restart: always
+    depends_on:
+      - deconz
+    network_mode: host
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /home/david/home-automation-configuration/homeassistant:/config
+    healthcheck:
+      test: 'curl -Lf http://localhost:8123'
+
+  deconz:
+    image: joch/deconz
+    container_name: deconz
+    restart: always
+    network_mode: host
+    ports:
+      - 8080:8080/tcp
+    volumes:
+       - /home/david/home-automation-configuration/deconz:/root/.local/share/dresden-elektronik/deCONZ:rw
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+
+  appdaemon:
+    image: johanssondavid/appdaemon2
+    container_name: appdaemon
+    restart: always
+    depends_on:
+      - homeassistant
+    network_mode: host
+    volumes:
+      - /home/david/home-automation-configuration/appdaemon/:/conf
+    ports:
+      - 5050:5050
+
+  ha-bridge:
+    image: bios/docker-alexa-ha-bridge
+    container_name: ha-bridge
+    restart: always
+    depends_on:
+      - homeassistant
+    network_mode: host
+    volumes:
+      - /home/david/home-automation-configuration/habridge/data/:/bridge/data
+    ports:
+      - 8124:8080

@@ -71,17 +71,17 @@ switch:
   platform: command_line
   switches:
     advent_kok:
-      command_on: curl http://192.168.0.15/b_on
-      command_off: curl http://192.168.0.15/b_off
+      command_on: curl -s http://192.168.0.15/b_on
+      command_off: curl -s http://192.168.0.15/b_off
     advent_vardagsrum:
-      command_on: curl http://192.168.0.15/d_on
-      command_off: curl http://192.168.0.15/d_off
+      command_on: curl -s http://192.168.0.15/d_on
+      command_off: curl -s http://192.168.0.15/d_off
     livingroom_shelf:
-      command_on: curl http://192.168.0.15/c_on
-      command_off: curl http://192.168.0.15/c_off
+      command_on: curl -s http://192.168.0.15/c_on
+      command_off: curl -s http://192.168.0.15/c_off
     receiver:
-      command_on: curl http://192.168.0.15/a_on
-      command_off: curl http://192.168.0.15/a_off
+      command_on: curl -s http://192.168.0.15/a_on
+      command_off: curl -s http://192.168.0.15/a_off
 
 volvooncall:
   username: !secret volvo_on_call_user
