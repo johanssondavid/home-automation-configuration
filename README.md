@@ -1,5 +1,5 @@
-# home-automation-configuration
-Bye bye old stuff. Hello docker! :thumbsup:
+# My home automation setup and installation instructions
+Hello docker! :thumbsup:
 
 ## Todo
 * Appdaemon 3
