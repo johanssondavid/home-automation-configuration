@@ -44,3 +44,11 @@ mkdir home-automation-configuration/appdaemon/compiled/javascript
 cd home-automation-configuration/docker_compose/
 sudo docker-compose up -d
 ```
+
+
+## Useful commands
+
+### deconz create api key
+```
+curl http://localhost:8080/api -d '{"devicetype": "home assistant"}'
+```
