@@ -17,7 +17,7 @@ sudo apt-get update
 sudo apt-get install docker-ce=17.12.0~ce-0~ubuntu
 sudo docker login   
 ```
-2. Install docker composer
+2. Install docker composer - https://docs.docker.com/compose/install/
 ```
 sudo apt-get install python3-pip
 sudo pip3 install docker-compose
