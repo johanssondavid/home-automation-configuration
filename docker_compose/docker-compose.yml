@@ -1,4 +1,4 @@
-version: '3'
+version: '2.1'
 
 services:
   homeassistant:
@@ -6,7 +6,8 @@ services:
     container_name: homeassistant
     restart: always
     depends_on:
-      - deconz
+      deconz:
+        condition: service_healthy
     network_mode: host
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -25,6 +26,8 @@ services:
        - /home/david/home-automation-configuration/deconz:/root/.local/share/dresden-elektronik/deCONZ:rw
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
+    healthcheck:
+      test: 'curl -Lf http://localhost:8080 && sleep 20'
 
   appdaemon:
     image: johanssondavid/appdaemon2
