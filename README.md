@@ -39,7 +39,7 @@ mkdir home-automation-configuration/appdaemon/compiled/css
 mkdir home-automation-configuration/appdaemon/compiled/javascript
 ```
 5. (Re)create secrets.yaml files
-6. Restore deconz/zll.db (optional)
+6. Restore deconz files
 6. Start docker compose
 
 ```
