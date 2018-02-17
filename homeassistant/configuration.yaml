@@ -134,5 +134,5 @@ scene: !include_dir_list scenes
 
 deconz:
     host: 127.0.0.1
-    api_key: 126A648B5D
+    api_key: !secret deconz_key
     port: 8080
