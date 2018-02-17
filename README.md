@@ -15,6 +15,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 sudo apt-get update
 sudo apt-get install docker-ce=17.12.0~ce-0~ubuntu
+sudo systemctl enable docker
 sudo docker login   
 ```
 2. Install docker composer - https://docs.docker.com/compose/install/
@@ -38,6 +39,7 @@ mkdir home-automation-configuration/appdaemon/compiled/css
 mkdir home-automation-configuration/appdaemon/compiled/javascript
 ```
 5. (Re)create secrets.yaml files
+6. Restore deconz/zll.db (optional)
 6. Start docker compose
 
 ```
