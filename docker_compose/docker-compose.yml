@@ -20,8 +20,6 @@ services:
     container_name: deconz
     restart: always
     network_mode: host
-    ports:
-      - 8080:8080/tcp
     volumes:
        - /home/david/home-automation-configuration/deconz:/root/.local/share/dresden-elektronik/deCONZ:rw
     devices:
@@ -38,17 +36,3 @@ services:
     network_mode: host
     volumes:
       - /home/david/home-automation-configuration/appdaemon/:/conf
-    ports:
-      - 5050:5050
-
-  ha-bridge:
-    image: bios/docker-alexa-ha-bridge
-    container_name: ha-bridge
-    restart: always
-    depends_on:
-      - homeassistant
-    network_mode: host
-    volumes:
-      - /home/david/home-automation-configuration/habridge/data/:/bridge/data
-    ports:
-      - 8124:8080
