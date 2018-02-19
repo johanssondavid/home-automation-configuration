@@ -29,8 +29,8 @@ class Modes(appapi.AppDaemon):
     self.listen_state(self.everyone_left_home_cb, "group.all_devices", old = "home", new = "not_home")
     self.listen_state(self.someone_came_home_cb, "group.all_devices", old = "not_home", new = "home")
 
-    self.listen_state(self.motion_cb, "binary_sensor.tradfri_motion_sensor__3")
-    self.listen_state(self.motion_cb, "binary_sensor.tradfri_motion_sensor__4")
+    self.listen_state(self.motion_cb, "binary_sensor.tradfri_motion_sensor")
+    self.listen_state(self.motion_cb, "binary_sensor.tradfri_motion_sensora__2")
 
     # alarms
     runtime = datetime.time(5, 15, 0)
