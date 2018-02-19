@@ -8,7 +8,7 @@ AppDaemon:
   api_key: !secret api_key
 
 HASS:
-  ha_url: http://localhost:8123
+  ha_url: http://127.0.0.1:8123
   ha_key: !secret api_key
 
 HADashboard:

@@ -33,7 +33,7 @@ http:
 # the developers to assist with development of Home Assistant.
 # For more information, please see:
 # https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
-updater:
+#updater:
   # Optional, allows Home Assistant developers to focus on popular components.
   # include_used_components: true
 
@@ -41,7 +41,7 @@ updater:
 #discovery:
 
 # Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
+#conversation:
 
 # Enables support for tracking state changes over time
 history:
@@ -71,17 +71,17 @@ switch:
   platform: command_line
   switches:
     advent_kok:
-      command_on: curl http://192.168.0.15/b_on
-      command_off: curl http://192.168.0.15/b_off
+      command_on: curl -s http://192.168.0.15/b_on
+      command_off: curl -s http://192.168.0.15/b_off
     advent_vardagsrum:
-      command_on: curl http://192.168.0.15/d_on
-      command_off: curl http://192.168.0.15/d_off
+      command_on: curl -s http://192.168.0.15/d_on
+      command_off: curl -s http://192.168.0.15/d_off
     livingroom_shelf:
-      command_on: curl http://192.168.0.15/c_on
-      command_off: curl http://192.168.0.15/c_off
+      command_on: curl -s http://192.168.0.15/c_on
+      command_off: curl -s http://192.168.0.15/c_off
     receiver:
-      command_on: curl http://192.168.0.15/a_on
-      command_off: curl http://192.168.0.15/a_off
+      command_on: curl -s http://192.168.0.15/a_on
+      command_off: curl -s http://192.168.0.15/a_off
 
 volvooncall:
   username: !secret volvo_on_call_user
@@ -133,4 +133,15 @@ weblink:
 scene: !include_dir_list scenes
 
 deconz:
-  host: 127.0.0.1
+    host: 127.0.0.1
+    api_key: !secret deconz_key
+    port: 8080
+
+emulated_hue:
+  off_maps_to_on_domains:
+    - script
+    - scene
+  expose_by_default: true
+  exposed_domains:
+    - switch
+    - script

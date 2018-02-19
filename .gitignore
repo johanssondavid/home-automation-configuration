@@ -1,13 +1,6 @@
-.*/
-.*
-!.gitignore
-!.homeassistant
 secrets.yaml
-known_devices.yaml
 __pycache__
-compiled
+.HA_VERSION
 *.db
 *.log
-*.deb
-*.jar
-tts
+known_devices.yaml
