@@ -32,9 +32,9 @@ sudo docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock --n
 
 4. Fetch from git
 ```
+cd
 git clone https://github.com/johanssondavid/home-automation-configuration.git
 cd home-automation-configuration/
-git checkout docker
 mkdir home-automation-configuration/appdaemon/compiled
 mkdir home-automation-configuration/appdaemon/compiled/css
 mkdir home-automation-configuration/appdaemon/compiled/javascript
@@ -44,7 +44,7 @@ mkdir home-automation-configuration/appdaemon/compiled/javascript
 6. Start docker compose
 
 ```
-cd home-automation-configuration/docker_compose/
+cd ~/home-automation-configuration/docker_compose/
 sudo docker-compose up -d
 ```
 
