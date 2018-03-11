@@ -6,3 +6,138 @@ d0c5f333dc93:
   picture:
   track: true
   vendor: Apple, Inc.
+
+volvo_ste747:
+  hide_if_away: false
+  icon: mdi:car
+  mac:
+  name: STE747
+  picture:
+  track: false
+  vendor:
+
+6001945d99b6:
+  hide_if_away: false
+  icon:
+  mac: 60:01:94:5D:99:B6
+  name: 6001945d99b6
+  picture:
+  track: false
+  vendor: Espressif Inc.
+
+b8782e0f1868:
+  hide_if_away: false
+  icon:
+  mac: B8:78:2E:0F:18:68
+  name: b8782e0f1868
+  picture:
+  track: false
+  vendor: Apple, Inc.
+
+00113243d6d9:
+  hide_if_away: false
+  icon:
+  mac: 00:11:32:43:D6:D9
+  name: 00113243d6d9
+  picture:
+  track: false
+  vendor: Synology Incorporated
+
+c8db2603b112:
+  hide_if_away: false
+  icon:
+  mac: C8:DB:26:03:B1:12
+  name: c8db2603b112
+  picture:
+  track: false
+  vendor: Logitech
+
+gateway:
+  hide_if_away: false
+  icon:
+  mac: A4:2B:8C:9A:6B:C8
+  name: gateway
+  picture:
+  track: false
+  vendor: NETGEAR
+
+000934288224:
+  hide_if_away: false
+  icon:
+  mac: 00:09:34:28:82:24
+  name: 000934288224
+  picture:
+  track: false
+  vendor: Dream-Multimedia-Tv GmbH
+
+e0cb4ee34749:
+  hide_if_away: false
+  icon:
+  mac: E0:CB:4E:E3:47:49
+  name: e0cb4ee34749
+  picture:
+  track: false
+  vendor: ASUSTek COMPUTER INC.
+
+3451c9eac462:
+  hide_if_away: false
+  icon:
+  mac: 34:51:C9:EA:C4:62
+  name: 3451c9eac462
+  picture:
+  track: false
+  vendor: Apple, Inc.
+
+14109fe58d27:
+  hide_if_away: false
+  icon:
+  mac: 14:10:9F:E5:8D:27
+  name: 14109fe58d27
+  picture:
+  track: false
+  vendor: Apple, Inc.
+
+74811423f93a:
+  hide_if_away: false
+  icon:
+  mac: 74:81:14:23:F9:3A
+  name: 74811423f93a
+  picture:
+  track: false
+  vendor: Apple, Inc.
+
+f496341e8ec6:
+  hide_if_away: false
+  icon:
+  mac: F4:96:34:1E:8E:C6
+  name: f496341e8ec6
+  picture:
+  track: false
+  vendor: Intel Corporate
+
+a0c9a0b74623:
+  hide_if_away: false
+  icon:
+  mac: A0:C9:A0:B7:46:23
+  name: a0c9a0b74623
+  picture:
+  track: false
+  vendor: Murata Manufacturing Co., Ltd.
+
+bc60a7387821:
+  hide_if_away: false
+  icon:
+  mac: BC:60:A7:38:78:21
+  name: bc60a7387821
+  picture:
+  track: false
+  vendor: Sony Interactive Entertainment Inc.
+
+f431c34f50d2:
+  hide_if_away: false
+  icon:
+  mac: F4:31:C3:4F:50:D2
+  name: f431c34f50d2
+  picture:
+  track: false
+  vendor: Apple, Inc.

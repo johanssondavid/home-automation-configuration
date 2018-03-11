@@ -122,13 +122,11 @@ input_boolean:
 weblink:
     entities:
       - name: Appdaemon dashboard
-        url: http://192.168.0.10:5050/
-      - name: Conbee
-        url: http://192.168.0.10/
-      - name: Node-red
-        url: http://192.168.0.10:1880/
-      - name: HA Bridge
-        url: http://192.168.0.10:8124/
+        url: http://192.168.0.36:5050/
+      - name: Deconz
+        url: http://192.168.0.36:8080/
+      - name: Portainer
+        url: http://192.168.0.36:9000/
 
 scene: !include_dir_list scenes
 
