@@ -18,6 +18,7 @@ DIMMER_STEP = 10
 
 class Modes(appapi.AppDaemon):
   def initialize(self):
+    self.log("initialize")
     self.lamp_state_on = self.get_state("switch.livingroom_shelf") == "on"
     self.log("lamp_state_on: " + str(self.lamp_state_on))
 
@@ -29,8 +30,8 @@ class Modes(appapi.AppDaemon):
     self.listen_state(self.everyone_left_home_cb, "group.all_devices", old = "home", new = "not_home")
     self.listen_state(self.someone_came_home_cb, "group.all_devices", old = "not_home", new = "home")
 
-    self.listen_state(self.motion_cb, "binary_sensor.tradfri_motion_sensor__3")
-    self.listen_state(self.motion_cb, "binary_sensor.tradfri_motion_sensor__4")
+    self.listen_state(self.motion_cb, "binary_sensor.tradfri_motion_sensor_")
+    self.listen_state(self.motion_cb, "binary_sensor.tradfri_motion_sensor__2")
 
     # alarms
     runtime = datetime.time(5, 15, 0)
@@ -75,9 +76,8 @@ class Modes(appapi.AppDaemon):
 
   # CALLBACKS
   def motion_cb(self, entity, attribute, old, new, kwargs):
-    self.log(new)
-    self.log(self.get_mode())
     if new == "on":
+      self.log("Motion detected from sensor: " + entity)
       if self.get_mode() == "Night":
         self.motion_timer = time.time() + MOTION_DELAY
         self.run_in(self.lights_off_after_motion, MOTION_DELAY + 5)
@@ -248,8 +248,8 @@ class Modes(appapi.AppDaemon):
     self.select_option("input_select.house_mode", "Evening")
     self.notify("Switching mode to Evening")
 
-    if self.someone_is_home():
-      self.scene_3()
+    #if self.someone_is_home():
+    #  self.scene_3()
 
   def night(self):
     self.log("Switching mode to Night")

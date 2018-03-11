@@ -30,7 +30,6 @@ entities:
     state: on
     brightness: 254
     color_temp: 366
-    state: off
   light.fonster_2:
     state: on
     brightness: 254

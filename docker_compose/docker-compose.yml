@@ -23,6 +23,7 @@ services:
     volumes:
        - /home/david/home-automation-configuration/deconz:/root/.local/share/dresden-elektronik/deCONZ:rw
     devices:
+      - /etc/localtime:/etc/localtime:ro
       - /dev/ttyUSB0:/dev/ttyUSB0
     healthcheck:
       test: 'curl -Lf http://localhost:8080 && sleep 20'
@@ -35,4 +36,5 @@ services:
       - homeassistant
     network_mode: host
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /home/david/home-automation-configuration/appdaemon/:/conf
