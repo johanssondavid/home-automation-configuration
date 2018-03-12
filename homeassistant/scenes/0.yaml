@@ -1,6 +1,6 @@
 name: Scene 0
 entities:
-  light.light_1:
+  light.hue_rgb1:
     state: off
   light.hall:
     state: off
@@ -10,7 +10,7 @@ entities:
     state: off
   light.sovrum_fonster:
     state: off
-  switch.livingroom_shelf:
+  light.osram_plug1:
     state: off
   light.sanglampa:
     state: off

@@ -1,6 +1,6 @@
 name: Scene 3
 entities:
-  switch.livingroom_shelf:
+  light.osram_plug1:
     state: on
   light.golvlampa:
     state: on
@@ -18,7 +18,7 @@ entities:
     state: on
     brightness: 191
     color_temp: 351
-  light.light_1:
+  light.hue_rgb1:
     state: on
     brightness: 63
     color_temp: 500

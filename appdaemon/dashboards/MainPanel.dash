@@ -1,4 +1,5 @@
-##
+#
+#
 ## Main arguments, all optional
 ##
 title: Hemkontroll
@@ -6,14 +7,10 @@ widget_dimensions: [120, 120]
 widget_margins: [5, 5]
 columns: 8
 
-label:
-    widget_type: label
-    text: Hemma hos David
-
-iphone:
-    widget_type: sensor
-    title: iPhone batteri
-    entity: sensor.davids_iphone_battery_level
+clock:
+    widget_type: clock
+    date_style: "color: black"
+    time_style: "color: green"
 
 linnebo:
     widget_type: sensor
@@ -39,14 +36,6 @@ advent:
     title: Adventsljusstake
     icon_on: mdi-lamp
     icon_off: mdi-lamp
-
-all_lights:
-    widget_type: group
-    entity: group.lampor
-    title: Alla trådfri
-    icon_on: mdi-lamp
-    icon_off: mdi-lamp
-    monitored_entity: light.golvlampa
 
 david_presence:
     widget_type: device_tracker
@@ -77,14 +66,14 @@ visitor_presence:
 
 lamp1:
     widget_type: light
-    entity: light.fonster_sovrum
+    entity: light.sovrum_fonster
     title: Fönster sovrum
     icon_on: mdi-lamp
     icon_off: mdi-lamp
 
 lamp2:
     widget_type: light
-    entity: light.sanglampa
+    entity: light.hue_rgb1
     title: Sänglampa
     icon_on: mdi-lamp
     icon_off: mdi-lamp
@@ -95,21 +84,7 @@ lamp3:
     title: Fönster vardagsrum
     icon_on: mdi-lamp
     icon_off: mdi-lamp
-    monitored_entity: light.fonster1
-
-lamp30:
-    widget_type: light
-    entity: light.fonster1
-    title: Fönster vardagsrum 1
-    icon_on: mdi-lamp
-    icon_off: mdi-lamp
-
-lamp31:
-    widget_type: light
-    entity: light.fonster2
-    title: Fönster vardagsrum 2
-    icon_on: mdi-lamp
-    icon_off: mdi-lamp
+    monitored_entity: light.fonster_1
 
 lamp4:
     widget_type: light
@@ -127,7 +102,7 @@ lamp6:
 
 lamp7:
     widget_type: light
-    entity: light.koksfonster
+    entity: light.kok_fonster
     title: Fönster kök
     icon_on: mdi-lamp
     icon_off: mdi-lamp
@@ -152,8 +127,8 @@ temp:
     precision: 1
 
 layout:
-    - include: top_panel
-    - temp, linnebo, david_presence, visitor_presence, nexa, all_lights
-    - car_fuel, car_range, iphone
-    - lamp1, lamp2, lamp3, lamp4, lamp6, lamp7, advent
+    - clock(2x2), temp, linnebo, david_presence, visitor_presence
+    - car_fuel, car_range
+    -
+    - lamp1, lamp2, lamp3, lamp4, lamp6, lamp7
     - include: mode_panel

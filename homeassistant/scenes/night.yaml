@@ -1,6 +1,6 @@
 name: Scene Night
 entities:
-  switch.livingroom_shelf:
+  light.osram_plug1:
     state: off
   light.golvlampa:
     state: off
@@ -12,7 +12,7 @@ entities:
     state: on
     brightness: 20
     color_temp: 351
-  light.light_1:
+  light.hue_rgb1:
     state: off
   light.sovrum_fonster:
     state: off

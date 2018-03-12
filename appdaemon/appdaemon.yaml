@@ -13,3 +13,5 @@ HASS:
 
 HADashboard:
   dash_url: http://localhost:5050
+  dash_force_compile: 1
+  dash_compile_on_start: 1

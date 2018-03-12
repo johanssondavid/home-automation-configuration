@@ -70,18 +70,18 @@ script: !include scripts.yaml
 switch:
   platform: command_line
   switches:
-    advent_kok:
-      command_on: curl -s http://192.168.0.15/b_on
-      command_off: curl -s http://192.168.0.15/b_off
-    advent_vardagsrum:
-      command_on: curl -s http://192.168.0.15/d_on
-      command_off: curl -s http://192.168.0.15/d_off
+#    advent_kok:
+#      command_on: curl -s http://192.168.0.15/b_on
+#      command_off: curl -s http://192.168.0.15/b_off
+#    advent_vardagsrum:
+#      command_on: curl -s http://192.168.0.15/d_on
+#      command_off: curl -s http://192.168.0.15/d_off
     livingroom_shelf:
       command_on: curl -s http://192.168.0.15/c_on
       command_off: curl -s http://192.168.0.15/c_off
-    receiver:
-      command_on: curl -s http://192.168.0.15/a_on
-      command_off: curl -s http://192.168.0.15/a_off
+#    receiver:
+#      command_on: curl -s http://192.168.0.15/a_on
+#      command_off: curl -s http://192.168.0.15/a_off
 
 volvooncall:
   username: !secret volvo_on_call_user
@@ -118,6 +118,13 @@ input_boolean:
     visitor_present:
         name: Visitor
         initial: off
+    wake_up_light_active:
+        name: Wake Up Light
+        initial: off
+    robot_cleaner_active:
+        name: Roborock Schedule Active
+        initial: off
+
 
 weblink:
     entities:

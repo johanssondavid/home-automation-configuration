@@ -12,6 +12,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /home/david/home-automation-configuration/homeassistant:/config
+      - /home/david/.ssh:/root/.ssh
     healthcheck:
       test: 'curl -Lf http://localhost:8123'
 
@@ -21,9 +22,9 @@ services:
     restart: always
     network_mode: host
     volumes:
-       - /home/david/home-automation-configuration/deconz:/root/.local/share/dresden-elektronik/deCONZ:rw
-    devices:
+      - /home/david/home-automation-configuration/deconz:/root/.local/share/dresden-elektronik/deCONZ:rw
       - /etc/localtime:/etc/localtime:ro
+    devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
     healthcheck:
       test: 'curl -Lf http://localhost:8080 && sleep 20'

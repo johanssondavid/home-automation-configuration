@@ -132,14 +132,14 @@ class Modes(appapi.AppDaemon):
       self.cycle_scene(1)
     if button == "2_on":
       self.cycle_scene(-1)
-    if button == "1_off":
-      self.scene_4()
-    if button == "2_off":
-      self.scene_off()
-    if button == "3_on":
-      self.cycle_color(1)
-    if button == "4_on":
-      self.cycle_color(-1)
+    #if button == "1_off":
+    #  self.scene_4()
+    #if button == "2_off":
+    #  self.scene_off()
+    #if button == "3_on":
+    #  self.cycle_color(1)
+    #if button == "4_on":
+    #  self.cycle_color(-1)
 
   def deconz_event_cb(self, event_name, data, kwargs):
     event =  data["event"]

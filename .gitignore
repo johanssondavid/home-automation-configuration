@@ -4,3 +4,4 @@ __pycache__
 *.db
 *.log
 known_devices.yaml
+appdaemon/compiled
