@@ -19,23 +19,23 @@ DIMMER_STEP = 10
 class Modes(appapi.AppDaemon):
   def initialize(self):
     self.log("initialize")
-    self.lamp_state_on = self.get_state("switch.livingroom_shelf") == "on"
+    self.lamp_state_on = self.get_state("light.osram_plug1") == "on"
     self.log("lamp_state_on: " + str(self.lamp_state_on))
 
     # Create some callbacks
     self.listen_event(self.mode_event, "MODE_CHANGE")
     self.listen_event(self.deconz_event_cb, "deconz_event")
-    self.listen_event(self.harmony_pressed_cb, "HARMONY_PRESSED")
+    self.listen_event(self.scene_change_cb, "SCENE")
 
     self.listen_state(self.everyone_left_home_cb, "group.all_devices", old = "home", new = "not_home")
     self.listen_state(self.someone_came_home_cb, "group.all_devices", old = "not_home", new = "home")
 
-    self.listen_state(self.motion_cb, "binary_sensor.tradfri_motion_sensor_")
-    self.listen_state(self.motion_cb, "binary_sensor.tradfri_motion_sensor__2")
+    self.listen_state(self.motion_cb, "binary_sensor.tradfri_motion_sensor__3")
+    self.listen_state(self.motion_cb, "binary_sensor.tradfri_motion_sensor__4")
 
     # alarms
     runtime = datetime.time(5, 15, 0)
-    self.run_daily(self.morning_cb, runtime)
+    #self.run_daily(self.morning_cb, runtime)
 
     # sunset/sunrise
     self.run_at_sunrise(self.sunrise_cb, offset=1800)
@@ -124,22 +124,14 @@ class Modes(appapi.AppDaemon):
 
     self.log("mode_event: " + self.get_mode())
 
-  def harmony_pressed_cb(self, event_name, data, kwargs):
-    button = data["button"]
-    self.log("button " + str(button) + " pressed")
+  def scene_change_cb(self, event_name, data, kwargs):
+    increment = data["increment"]
+    self.log("increment " + str(increment) + " pressed")
 
-    if button == "1_on":
+    if increment == "up":
       self.cycle_scene(1)
-    if button == "2_on":
+    if increment == "down":
       self.cycle_scene(-1)
-    #if button == "1_off":
-    #  self.scene_4()
-    #if button == "2_off":
-    #  self.scene_off()
-    #if button == "3_on":
-    #  self.cycle_color(1)
-    #if button == "4_on":
-    #  self.cycle_color(-1)
 
   def deconz_event_cb(self, event_name, data, kwargs):
     event =  data["event"]
@@ -166,7 +158,7 @@ class Modes(appapi.AppDaemon):
     return (self.get_state(entity_id="group.all_devices") == "home") or self.visitor_present()
 
   def visitor_present(self):
-    return self.get_state(entity_id="input_boolean.visitor_present") == "on"
+    return self.get_state(entity_id="input_boolean.dnd") == "on"
 
   def cycle_color(self, value):
     self.color_cycle_value += value
@@ -177,17 +169,17 @@ class Modes(appapi.AppDaemon):
     val = self.color_cycle_value 
 
     if val == 0:
-      self.turn_off("light.light_1")
+      self.turn_off("light.hue_rgb1")
     elif val == 1:
-      self.turn_on("light.light_1", brightness_pct=100, color_temp=500)
+      self.turn_on("light.hue_rgb1", brightness_pct=100, color_temp=500)
     elif val == 2:
-      self.turn_on("light.light_1", brightness_pct=100, color_temp=319)
+      self.turn_on("light.hue_rgb1", brightness_pct=100, color_temp=319)
     elif val == 3:
-      self.turn_on("light.light_1", brightness_pct=100, rgb_color = [255,0,0])
+      self.turn_on("light.hue_rgb1", brightness_pct=100, rgb_color = [255,0,0])
     elif val == 4:
-      self.turn_on("light.light_1", brightness_pct=100, rgb_color = [0,255,0])
+      self.turn_on("light.hue_rgb1", brightness_pct=100, rgb_color = [0,255,0])
     elif val == 5:
-      self.turn_on("light.light_1", brightness_pct=100, rgb_color = [0,0,255])
+      self.turn_on("light.hue_rgb1", brightness_pct=100, rgb_color = [0,0,255])
     else:
       pass
 
@@ -216,37 +208,34 @@ class Modes(appapi.AppDaemon):
 
   def toggle_lamps(self):
       if self.lamp_state_on:
-        self.turn_off("switch.livingroom_shelf")
+        self.turn_off("light.osram_plug1")
         self.turn_off("group.all_lights")
-        self.turn_off("light.light_1")
+        self.turn_off("light.hue_rgb1")
       else:
-        self.turn_on("switch.livingroom_shelf")
+        self.turn_on("light.osram_plug1")
         self.turn_on("group.all_lights")
-        self.turn_on("light.light_1")
+        self.turn_on("light.hue_rgb1")
       self.lamp_state_on = not(self.lamp_state_on)
   
   def morning(self):
     self.log("Switching mode to Morning")
     self.select_option("input_select.house_mode", "Morning")
-    self.notify("Switching mode to Morning")
     
     self.log(datetime.datetime.today().weekday())
     self.log(self.visitor_present())
 
     if datetime.datetime.today().weekday() < 5 and not(self.visitor_present()):
-      self.turn_on("light.light_1", transition = 1800, brightness_pct=80, color_temp=319)
+      self.turn_on("light.hue_rgb1", transition = 1800, brightness_pct=80, color_temp=319)
 
   def day(self):
     self.log("Switching mode to Day")
     self.select_option("input_select.house_mode", "Day")
-    self.notify("Switching mode to Day")
 
     self.scene_off()
 
   def evening(self):
     self.log("Switching mode to Evening")
     self.select_option("input_select.house_mode", "Evening")
-    self.notify("Switching mode to Evening")
 
     #if self.someone_is_home():
     #  self.scene_3()
@@ -254,7 +243,6 @@ class Modes(appapi.AppDaemon):
   def night(self):
     self.log("Switching mode to Night")
     self.select_option("input_select.house_mode", "Night")
-    self.notify("Switching mode to Night")
 
-    self.turn_off("switch.livingroom_shelf")
+    self.turn_off("light.osram_plug1")
     self.run_in(self.delay_off_night_cb, 12)

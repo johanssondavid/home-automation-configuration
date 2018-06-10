@@ -2,7 +2,7 @@ version: '2.1'
 
 services:
   homeassistant:
-    image: homeassistant/home-assistant
+    image: homeassistant/home-assistant:0.70.0
     container_name: homeassistant
     restart: always
     depends_on:

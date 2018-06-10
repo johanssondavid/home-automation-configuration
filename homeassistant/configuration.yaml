@@ -115,16 +115,9 @@ apple_tv:
 #    password: !secret http
 
 input_boolean:
-    visitor_present:
-        name: Visitor
-        initial: off
-    wake_up_light_active:
-        name: Wake Up Light
-        initial: off
-    robot_cleaner_active:
-        name: Roborock Schedule Active
-        initial: off
-
+    dnd:
+        name: Do not disturb
+        initial: on
 
 weblink:
     entities:
@@ -145,8 +138,22 @@ deconz:
 emulated_hue:
   off_maps_to_on_domains:
     - script
-    - scene
   expose_by_default: true
   exposed_domains:
-    - switch
     - script
+
+input_datetime:
+  wol:
+    name: Wake Up Light
+    has_date: false
+    has_time: true
+    initial: 05:15
+
+homekit:
+
+vacuum:
+  - platform: xiaomi_miio
+    host: 192.168.0.41
+    token: !secret xiaomi
+
+ios:

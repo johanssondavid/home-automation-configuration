@@ -26,17 +26,17 @@ night:
       event_data:
         mode: Night
 
-harmony_button_1_on:
-  alias: Harmony button 1 on
+scene_brighter:
+  alias: Scene brigther
   sequence:
-    - event: HARMONY_PRESSED
+    - event: SCENE
       event_data:
-        button: 1_on
+        increment: up
 
-harmony_button_2_on:
-  alias: Harmony button 2 on
+scene_darker:
+  alias: Scene darker
   sequence:
-    - event: HARMONY_PRESSED
+    - event: SCENE
       event_data:
-        button: 2_on
+        increment: down
 

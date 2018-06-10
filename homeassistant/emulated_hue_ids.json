@@ -18,6 +18,8 @@
     "24": "script.remote3",
     "25": "script.night",
     "26": "script.remote4",
+    "27": "script.scene_darker",
+    "28": "script.scene_brighter",
     "3": "switch.receiver",
     "4": "switch.advent_kok",
     "5": "switch.ste747_heater",

@@ -141,3 +141,48 @@ f431c34f50d2:
   picture:
   track: false
   vendor: Apple, Inc.
+
+d0a637b163a8:
+  hide_if_away: false
+  icon:
+  mac: D0:A6:37:B1:63:A8
+  name: d0a637b163a8
+  picture:
+  track: false
+  vendor: Apple, Inc.
+
+7811dc8319df:
+  hide_if_away: false
+  icon:
+  mac: 78:11:DC:83:19:DF
+  name: 7811dc8319df
+  picture:
+  track: false
+  vendor: XIAOMI Electronics,CO.,LTD
+
+848edfeaf30f:
+  hide_if_away: false
+  icon:
+  mac: 84:8E:DF:EA:F3:0F
+  name: 848edfeaf30f
+  picture:
+  track: false
+  vendor: Sony Mobile Communications AB
+
+10a5d0c67f77:
+  hide_if_away: false
+  icon:
+  mac: 10:A5:D0:C6:7F:77
+  name: 10a5d0c67f77
+  picture:
+  track: false
+  vendor: Murata Manufacturing Co., Ltd.
+
+0009342acae1:
+  hide_if_away: false
+  icon:
+  mac: 00:09:34:2A:CA:E1
+  name: 0009342acae1
+  picture:
+  track: false
+  vendor: Dream-Multimedia-Tv GmbH
