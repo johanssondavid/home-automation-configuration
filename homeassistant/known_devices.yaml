@@ -186,3 +186,19 @@ d0a637b163a8:
   picture:
   track: false
   vendor: Dream-Multimedia-Tv GmbH
+
+0025d3ce2a5e:
+  hide_if_away: false
+  icon:
+  mac: 00:25:D3:CE:2A:5E
+  name: 0025d3ce2a5e
+  picture:
+  track: false
+
+bc543678ed98:
+  hide_if_away: false
+  icon:
+  mac: BC:54:36:78:ED:98
+  name: bc543678ed98
+  picture:
+  track: false

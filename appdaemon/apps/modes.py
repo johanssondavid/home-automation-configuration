@@ -35,7 +35,7 @@ class Modes(appapi.AppDaemon):
 
     # alarms
     runtime = datetime.time(5, 15, 0)
-    #self.run_daily(self.morning_cb, runtime)
+    self.run_daily(self.morning_cb, runtime)
 
     # sunset/sunrise
     self.run_at_sunrise(self.sunrise_cb, offset=1800)
@@ -83,7 +83,7 @@ class Modes(appapi.AppDaemon):
         self.run_in(self.lights_off_after_motion, MOTION_DELAY + 5)
         self.turn_on("scene.scene_night")
 
-      morning = (self.get_mode() == "Morning") and not(self.visitor_present())
+      morning = (self.get_mode() == "Morning") and not(self.lights_automation_on())
       evening = (self.get_mode() == "Evening") and not(self.someone_is_home())
       if morning or evening:
         self.scene_3()
@@ -155,10 +155,19 @@ class Modes(appapi.AppDaemon):
   # HELP FUNCTIONS
   #
   def someone_is_home(self):
-    return (self.get_state(entity_id="group.all_devices") == "home") or self.visitor_present()
+    return (self.get_state(entity_id="group.all_devices") == "home") or not(self.automations_on())
 
-  def visitor_present(self):
-    return self.get_state(entity_id="input_boolean.dnd") == "on"
+  def automations_on(self):
+    return self.get_state(entity_id="input_boolean.automations_off") == "off"
+
+  def lights_automation_on(self):
+    return self.get_state(entity_id="input_boolean.lights_automation") == "on" and self.automations_on()
+
+  def vacuum_automation_on(self):
+    return self.get_state(entity_id="input_boolean.vacuum_automation") == "on" and self.automations_on()
+
+  def wakeuplight_automation_on(self):
+    return self.get_state(entity_id="input_boolean.wakeuplight_automation") == "on" and self.automations_on()
 
   def cycle_color(self, value):
     self.color_cycle_value += value
@@ -222,9 +231,8 @@ class Modes(appapi.AppDaemon):
     self.select_option("input_select.house_mode", "Morning")
     
     self.log(datetime.datetime.today().weekday())
-    self.log(self.visitor_present())
 
-    if datetime.datetime.today().weekday() < 5 and not(self.visitor_present()):
+    if datetime.datetime.today().weekday() < 5 and self.wakeuplight_automation_on():
       self.turn_on("light.hue_rgb1", transition = 1800, brightness_pct=80, color_temp=319)
 
   def day(self):

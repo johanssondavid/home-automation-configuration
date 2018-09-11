@@ -30,7 +30,7 @@ class Xiaomi(appapi.AppDaemon):
 
     early = now.time() < dndEnd.time()
     late = now.time() > dndStart.time()
-    dnd_boolean = self.get_state(entity_id="input_boolean.dnd") == "on"
+    dnd_boolean = self.get_state(entity_id="input_boolean.vacuum_automation") == "off" or self.get_state(entity_id="automations_off") == "on"
     someone_is_home = self.get_state(entity_id="group.all_devices") == "home"
 
     return early or late or dnd_boolean or someone_is_home

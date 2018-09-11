@@ -83,9 +83,9 @@ switch:
 #      command_on: curl -s http://192.168.0.15/a_on
 #      command_off: curl -s http://192.168.0.15/a_off
 
-volvooncall:
-  username: !secret volvo_on_call_user
-  password: !secret volvo_on_call_pw
+#volvooncall:
+#    username: !secret volvo_on_call_user
+#    password: !secret volvo_on_call_pw
 
 device_tracker:
   - platform: nmap_tracker
@@ -103,10 +103,10 @@ input_select:
     - Morning
     initial: Evening
 
-apple_tv:
-  - host: 192.168.0.14
-    login_id: 00000000-3f5b-b3eb-3fa8-fb3ef8224211
-    name: Apple TV
+    #apple_tv:
+    #  - host: 192.168.0.14
+    #    login_id: 00000000-3f5b-b3eb-3fa8-fb3ef8224211
+    #    name: Apple TV
 
 #influxdb:
 #    host: 127.0.0.1
@@ -115,9 +115,18 @@ apple_tv:
 #    password: !secret http
 
 input_boolean:
-    dnd:
-        name: Do not disturb
+    lights_automation:
+        name: Lights automation
         initial: on
+    vacuum_automation:
+        name: Vacuum automation
+        initial: off
+    wakeuplight_automation:
+        name: Wake up light
+        initial: off
+    automations_off:
+        name: All automations off
+        initial: off
 
 weblink:
     entities:
