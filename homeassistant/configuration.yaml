@@ -130,8 +130,6 @@ input_boolean:
 
 weblink:
     entities:
-      - name: Appdaemon dashboard
-        url: http://192.168.0.36:5050/
       - name: Deconz
         url: http://192.168.0.36:8080/
       - name: Portainer
