@@ -48,26 +48,32 @@ class Modes(hass.Hass):
 
   def scene_off(self):
     self.scene = 0
+    self.lamp_state_on = False
     self.turn_on("scene.scene_0")
 
   def scene_1(self):
     self.scene = 1
+    self.lamp_state_on = True
     self.turn_on("scene.scene_1")
 
   def scene_2(self):
     self.scene = 2
+    self.lamp_state_on = True
     self.turn_on("scene.scene_2")
 
   def scene_3(self):
     self.scene = 3
+    self.lamp_state_on = True
     self.turn_on("scene.scene_3")
 
   def scene_4(self):
     self.scene = 4
+    self.lamp_state_on = True
     self.turn_on("scene.scene_4")
 
   def scene_5(self):
     self.scene = 5
+    self.lamp_state_on = True
     self.turn_on("scene.scene_5")
 
 
