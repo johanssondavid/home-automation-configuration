@@ -1,4 +1,4 @@
-import appdaemon.appapi as appapi
+import appdaemon.plugins.hass.hassapi as hass
 import datetime
 import appdaemon
 import time
@@ -7,7 +7,7 @@ SAMPLE_TIME = 60
 SECONDS_BETWEEN_RUN = 60 * 60 * 42
 SECONDS_ACTIVE_CONSIDER_CLEAN = 60*30
 
-class Xiaomi(appapi.AppDaemon):
+class Xiaomi(hass.Hass):
   def initialize(self):
     self.log("initialize xiaomi app")
 

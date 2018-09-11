@@ -30,7 +30,7 @@ services:
       test: 'curl -Lf http://localhost:8080 && sleep 20'
 
   appdaemon:
-    image: acockburn/appdaemon:2.1.12
+    image: acockburn/appdaemon:3.0.1
     container_name: appdaemon
     restart: always
     depends_on:

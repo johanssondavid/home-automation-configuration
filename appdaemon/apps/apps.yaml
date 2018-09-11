@@ -2,10 +2,6 @@ modes:
   module: modes
   class: Modes
 
-advent:
-  module: advent
-  class: Advent
-
 xiaomi:
   module: xiaomi
   class: Xiaomi

@@ -1,4 +1,4 @@
-import appdaemon.appapi as appapi
+import appdaemon.plugins.hass.hassapi as hass
 import datetime
 import appdaemon
 import time
@@ -16,7 +16,7 @@ DIMMER_STEP = 10
 # medium 319
 # varm 500
 
-class Modes(appapi.AppDaemon):
+class Modes(hass.Hass):
   def initialize(self):
     self.log("initialize")
     self.lamp_state_on = self.get_state("light.osram_plug1") == "on"
