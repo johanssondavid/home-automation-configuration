@@ -161,19 +161,19 @@ class Modes(hass.Hass):
   # HELP FUNCTIONS
   #
   def someone_is_home(self):
-    return (self.get_state(entity_id="group.all_devices") == "home") or not(self.automations_on())
+    return (self.get_state("group.all_devices") == "home") or not(self.automations_on())
 
   def automations_on(self):
-    return self.get_state(entity_id="input_boolean.automations_off") == "off"
+    return self.get_state("input_boolean.automations_off") == "off"
 
   def lights_automation_on(self):
-    return self.get_state(entity_id="input_boolean.lights_automation") == "on" and self.automations_on()
+    return self.get_state("input_boolean.lights_automation") == "on" and self.automations_on()
 
   def vacuum_automation_on(self):
-    return self.get_state(entity_id="input_boolean.vacuum_automation") == "on" and self.automations_on()
+    return self.get_state("input_boolean.vacuum_automation") == "on" and self.automations_on()
 
   def wakeuplight_automation_on(self):
-    return self.get_state(entity_id="input_boolean.wakeuplight_automation") == "on" and self.automations_on()
+    return self.get_state("input_boolean.wakeuplight_automation") == "on" and self.automations_on()
 
   def cycle_color(self, value):
     self.color_cycle_value += value

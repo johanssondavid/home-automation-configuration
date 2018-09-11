@@ -13,14 +13,8 @@ class Xiaomi(hass.Hass):
 
     self.run_in(self.callback, SAMPLE_TIME)
 
-    #self.listen_state(self.someone_came_home_cb, "group.all_devices", old = "not_home", new = "home")
-
     self.next_run = SECONDS_BETWEEN_RUN
     self.time_until_consider_cleaned = SECONDS_ACTIVE_CONSIDER_CLEAN
-
-  #def someone_came_home_cb(self):
-  #    if self.get_state(entity_id="vacuum.xiaomi_vacuum_cleaner") == "on":
-  #      self.call_service("vacuum.turn_off")
 
   def dnd_active(self):
     dndStart = datetime.datetime.strptime(self.entities.vacuum.xiaomi_vacuum_cleaner.attributes.do_not_disturb_start, '%H:%M:%S')
@@ -30,13 +24,13 @@ class Xiaomi(hass.Hass):
 
     early = now.time() < dndEnd.time()
     late = now.time() > dndStart.time()
-    dnd_boolean = self.get_state(entity_id="input_boolean.vacuum_automation") == "off" or self.get_state(entity_id="automations_off") == "on"
-    someone_is_home = self.get_state(entity_id="group.all_devices") == "home"
+    dnd_boolean = self.get_state("input_boolean.vacuum_automation") == "off" or self.get_state("automations_off") == "on"
+    someone_is_home = self.get_state("group.all_devices") == "home"
 
     return early or late or dnd_boolean or someone_is_home
 
   def callback(self, debug):
-    isRobotOn = self.get_state(entity_id="vacuum.xiaomi_vacuum_cleaner") == "on"
+    isRobotOn = self.get_state("vacuum.xiaomi_vacuum_cleaner") == "on"
 
     if isRobotOn:
       if self.time_until_consider_cleaned <= 0:
