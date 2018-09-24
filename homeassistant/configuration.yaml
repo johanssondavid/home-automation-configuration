@@ -88,10 +88,12 @@ switch:
 #    password: !secret volvo_on_call_pw
 
 device_tracker:
-  - platform: nmap_tracker
-    hosts: 192.168.0.1/24
-    consider_home: 900
-    track_new_devices: no
+        #- platform: nmap_tracker
+        #hosts: 192.168.0.1/24
+        #consider_home: 900
+        #track_new_devices: no
+  - platform: bluetooth_tracker
+    track_new_devices: False
 
 input_select:
   house_mode:
@@ -162,5 +164,3 @@ vacuum:
   - platform: xiaomi_miio
     host: 192.168.0.41
     token: !secret xiaomi
-
-ios:

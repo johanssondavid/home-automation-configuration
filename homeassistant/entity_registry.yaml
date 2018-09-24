@@ -66,3 +66,11 @@ sensor.davids_iphone_battery_level:
   name:
   platform: ios
   unique_id: level_davids_iphone
+sensor.david__iphone_battery_level:
+  name:
+  platform: ios
+  unique_id: level_david__iphone
+sensor.david__iphone_battery_state:
+  name:
+  platform: ios
+  unique_id: state_david__iphone

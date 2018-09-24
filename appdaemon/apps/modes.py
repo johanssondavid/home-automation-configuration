@@ -84,14 +84,14 @@ class Modes(hass.Hass):
   def motion_cb(self, entity, attribute, old, new, kwargs):
     if new == "on":
       self.log("Motion detected from sensor: " + entity)
-      if self.get_mode() == "Night":
+      if self.lights_automation_on() and self.get_mode() == "Night":
         self.motion_timer = time.time() + MOTION_DELAY
         self.run_in(self.lights_off_after_motion, MOTION_DELAY + 5)
         self.turn_on("scene.scene_night")
 
-      morning = (self.get_mode() == "Morning") and not(self.lights_automation_on())
+      morning = (self.get_mode() == "Morning")
       evening = (self.get_mode() == "Evening") and not(self.someone_is_home())
-      if morning or evening:
+      if self.lights_automation_on() and (morning or evening):
         self.scene_3()
 
   def lights_off_after_motion(self, kwargs):
@@ -100,11 +100,12 @@ class Modes(hass.Hass):
     
   def everyone_left_home_cb(self, entity, attribute, old, new, kwargs):
     self.log("eveyone left home")
-    self.scene_off()
+    if self.lights_automation_on():
+      self.scene_off()
 
   def someone_came_home_cb(self, entity, attribute, old, new, kwargs):
     self.log("someone came home")
-    if (self.get_mode() == "Morning") or (self.get_mode() == "Evening"):
+    if self.lights_automation_on() and ((self.get_mode() == "Morning") or (self.get_mode() == "Evening")):
       self.scene_3()
 
   def morning_cb(self, kvwargs):

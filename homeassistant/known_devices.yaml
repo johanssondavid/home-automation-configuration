@@ -2,9 +2,9 @@ d0c5f333dc93:
   hide_if_away: false
   icon:
   mac: D0:C5:F3:33:DC:93
-  name: David
+  name: David iPhone 7
   picture:
-  track: true
+  track: false
   vendor: Apple, Inc.
 
 volvo_ste747:
@@ -202,3 +202,19 @@ bc543678ed98:
   name: bc543678ed98
   picture:
   track: false
+
+38539c2239b3:
+  hide_if_away: false
+  icon:
+  mac: 38:53:9C:22:39:B3
+  name: David iPhone Xs
+  picture:
+  track: false
+
+david__iphone:
+  hide_if_away: false
+  icon:
+  mac: BT_38:53:9C:14:E2:5B
+  name: David – iPhone
+  picture:
+  track: true
