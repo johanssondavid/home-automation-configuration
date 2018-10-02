@@ -34,7 +34,7 @@ class Modes(hass.Hass):
     self.listen_state(self.motion_cb, "binary_sensor.tradfri_motion_sensor__4")
 
     # alarms
-    runtime = datetime.time(5, 15, 0)
+    runtime = datetime.time(5, 30, 0)
     self.run_daily(self.morning_cb, runtime)
 
     # sunset/sunrise
@@ -259,5 +259,5 @@ class Modes(hass.Hass):
     self.log("Switching mode to Night")
     self.select_option("input_select.house_mode", "Night")
 
-    self.turn_off("light.osram_plug1")
+    self.turn_off("switch.osram_plug1")
     self.run_in(self.delay_off_night_cb, 12)

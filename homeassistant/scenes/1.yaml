@@ -1,6 +1,6 @@
 name: Scene 1
 entities:
-  light.osram_plug1:
+  switch.osram_plug1:
     state: off
   light.golvlampa:
     state: on

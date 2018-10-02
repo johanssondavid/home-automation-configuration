@@ -2,7 +2,7 @@ version: '2.1'
 
 services:
   homeassistant:
-    image: homeassistant/home-assistant:0.70.0
+    image: homeassistant/home-assistant:0.79.3
     container_name: homeassistant
     restart: always
     depends_on:
@@ -17,7 +17,7 @@ services:
       test: 'curl -Lf http://localhost:8123'
 
   deconz:
-    image: joch/deconz:2.05.07
+    image: joch/deconz:2.05.32
     container_name: deconz
     restart: always
     network_mode: host

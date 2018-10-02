@@ -207,7 +207,7 @@ bc543678ed98:
   hide_if_away: false
   icon:
   mac: 38:53:9C:22:39:B3
-  name: David iPhone Xs
+  name: David iPhone 7
   picture:
   track: false
 
@@ -215,6 +215,6 @@ david__iphone:
   hide_if_away: false
   icon:
   mac: BT_38:53:9C:14:E2:5B
-  name: David – iPhone
+  name: David – iPhone Xs
   picture:
   track: true

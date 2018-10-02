@@ -67,18 +67,18 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 
-switch:
-  platform: command_line
-  switches:
+#switch:
+#  platform: command_line
+#  switches:
 #    advent_kok:
 #      command_on: curl -s http://192.168.0.15/b_on
 #      command_off: curl -s http://192.168.0.15/b_off
 #    advent_vardagsrum:
 #      command_on: curl -s http://192.168.0.15/d_on
 #      command_off: curl -s http://192.168.0.15/d_off
-    livingroom_shelf:
-      command_on: curl -s http://192.168.0.15/c_on
-      command_off: curl -s http://192.168.0.15/c_off
+#    livingroom_shelf:
+#      command_on: curl -s http://192.168.0.15/c_on
+#      command_off: curl -s http://192.168.0.15/c_off
 #    receiver:
 #      command_on: curl -s http://192.168.0.15/a_on
 #      command_off: curl -s http://192.168.0.15/a_off
