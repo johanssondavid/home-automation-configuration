@@ -35,9 +35,9 @@ sudo docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock --n
 cd
 git clone https://github.com/johanssondavid/home-automation-configuration.git
 cd home-automation-configuration/
-mkdir home-automation-configuration/appdaemon/compiled
-mkdir home-automation-configuration/appdaemon/compiled/css
-mkdir home-automation-configuration/appdaemon/compiled/javascript
+mkdir home-automation-configuration/appdaemon/compiled            # obsolete ?
+mkdir home-automation-configuration/appdaemon/compiled/css        # obsolete ?
+mkdir home-automation-configuration/appdaemon/compiled/javascript # obsolete ?
 ```
 5. (Re)create secrets.yaml files
 6. Restore deconz files
