@@ -14,7 +14,7 @@ services:
       - /home/david/home-automation-configuration/homeassistant:/config
       - /home/david/.ssh:/root/.ssh
     healthcheck:
-      test: 'curl -Lf http://localhost:8123'
+      test: 'exit 0'
 
   deconz:
     image: joch/deconz:2.05.32
@@ -27,14 +27,15 @@ services:
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
     healthcheck:
-      test: 'curl -Lf http://localhost:8080 && sleep 20'
+      test: 'exit 0'
 
   appdaemon:
     image: acockburn/appdaemon:3.0.1
     container_name: appdaemon
     restart: always
     depends_on:
-      - homeassistant
+      homeassistant:
+        condition: service_healthy
     network_mode: host
     volumes:
       - /etc/localtime:/etc/localtime:ro
