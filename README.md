@@ -64,11 +64,13 @@ docker run -d \
 -p 8086:8086 \
 -p 8083:8083 \
 -v /volume1/docker/influxdb/:/var/lib/influxdb \
-influxdb```
+influxdb
+```
 
 ```
 docker run -d -p 3000:3000 \
 --name="grafana" \
     -v /volume1/docker/grafana:/var/lib/grafana \
-    grafana/grafana```
+    grafana/grafana
 -p 8083:8083 \
+```
