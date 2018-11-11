@@ -88,5 +88,6 @@ sudo docker run -v openvpn_data:/etc/openvpn -d -p 1194:1194/udp --name openvpn 
 sudo docker run -v openvpn_data:/etc/openvpn --rm -it kylemanna/openvpn easyrsa build-client-full <user>_client nopass
 sudo docker run -v openvpn_data:/etc/openvpn --rm -it kylemanna/openvpn ovpn_getclient <user>_client > <user>_client.ovpn
 
-
 ```
+https://ruimarinho.github.io/post/configuring-a-secure-openvpn-2-4-server-with-docker/
+https://toub.es/2018/02/15/low-cost-vpn-solution-with-two-factor-authentication-on-a-raspberry-pi/
