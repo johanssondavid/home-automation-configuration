@@ -63,6 +63,19 @@ sensor:
     unit_of_measurement: "°C"
     scan_interval: 600
 
+  - platform: trafikverket_weatherstation
+    name: Väder Alsbäck
+    api_key: !secret trafikverket
+    station: Bua
+    monitored_conditions:
+      - air_temp
+      - road_temp
+      - humidity
+      - precipitation
+      - wind_direction
+      - wind_direction_text
+      - wind_speed
+
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
@@ -136,6 +149,8 @@ weblink:
         url: http://192.168.0.36:8080/
       - name: Portainer
         url: http://192.168.0.36:9000/
+      - name: Grafana
+        url: http://192.168.0.36:3000/
 
 scene: !include_dir_list scenes
 
@@ -164,3 +179,22 @@ vacuum:
   - platform: xiaomi_miio
     host: 192.168.0.41
     token: !secret xiaomi
+
+tellduslive:
+
+influxdb:
+  host: localhost
+  include:
+    entities:
+      - sensor.vardagsrummet_humidity
+      - sensor.vardagsrummet_temperature
+      - sensor.verandan_temperature
+      - sensor.kallaren_inne_humidity
+      - sensor.kallaren_inne_temperature
+      - sensor.kallaren_ute_temperature
+      - sensor.linnebo_temp
+      - sensor.luftavfuktare_kallaren_power_2
+      - switch.luftavfuktare_kallaren
+      - sensor.vader_alsback_air_temperature
+      - sensor.vader_alsback_road_temperature
+      - sensor.vader_alsback_humidity
