@@ -74,3 +74,14 @@ docker run -d -p 3000:3000 \
     grafana/grafana
 -p 8083:8083 \
 ```
+
+
+### Open VPN
+```
+sudo docker run -v openvpn_data:/etc/openvpn kylemanna/openvpn ovpn_genconfig -u udp://<server> -2 -C AES-256-GCM
+sudo docker run -v openvpn_data:/etc/openvpn --rm -it kylemanna/openvpn ovpn_initpki
+sudo docker run -v openvpn_data:/etc/openvpn --rm -it kylemanna/openvpn easyrsa build-ca
+sudo docker run -v openvpn_data:/etc/openvpn --rm -it kylemanna/openvpn easyrsa build-client-full <user>d
+sudo docker run -v openvpn_data:/etc/openvpn --rm -it kylemanna/openvpn ovpn_otp_user <user>
+sudo docker run -v openvpn_data:/etc/openvpn -d -p 1194:1194/udp --name openvpn --cap-add=NET_ADMIN --restart always kylemanna/openvpn
+
