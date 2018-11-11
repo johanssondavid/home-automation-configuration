@@ -55,3 +55,20 @@ sudo docker-compose up -d
 ```
 curl http://localhost:8080/api -d '{"devicetype": "home assistant"}'
 ```
+
+### InfluxDB & Grafana
+```
+docker run -d \
+--name="influxdb" \
+--restart always \
+-p 8086:8086 \
+-p 8083:8083 \
+-v /volume1/docker/influxdb/:/var/lib/influxdb \
+influxdb```
+
+```
+docker run -d -p 3000:3000 \
+--name="grafana" \
+    -v /volume1/docker/grafana:/var/lib/grafana \
+    grafana/grafana```
+-p 8083:8083 \
