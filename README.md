@@ -70,6 +70,7 @@ influxdb
 ```
 docker run -d -p 3000:3000 \
 --name="grafana" \
+--restart always
     -v /volume1/docker/grafana:/var/lib/grafana \
     grafana/grafana
 -p 8083:8083 \
