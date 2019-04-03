@@ -76,6 +76,12 @@ docker run -d -p 3000:3000 \
 -p 8083:8083 \
 ```
 
+Grafana settings
+172.17.0.5
+d home_assistant
+u home-assistant
+p home_assistant
+
 
 ### Open VPN
 ```
