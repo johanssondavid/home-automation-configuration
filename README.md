@@ -83,6 +83,10 @@ u home-assistant
 p home_assistant
 
 
+### ddclient
+sudo docker run -d --name ddclient -v /home/david/data/ddclient:/config --restart unless-stopped linuxserver/ddclient
+
+
 ### Open VPN
 ```
 sudo docker volume create --name openvpn_data
