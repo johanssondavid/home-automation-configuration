@@ -68,7 +68,7 @@ influxdb
 ```
 
 ```
-sudo docker run -d -p 3000:3000 --name="grafana3" --restart always -v /home/david/data/grafana:/var/lib/grafana grafana/grafana:6.0.2
+sudo docker run -d -p 3000:3000 --name="grafana" --restart always -v /home/david/data/grafana:/var/lib/grafana grafana/grafana:6.0.2
 ```
 
 Grafana settings
@@ -79,8 +79,9 @@ p home_assistant
 
 
 ### ddclient
+```
 sudo docker run -d --name ddclient -v /home/david/data/ddclient:/config --restart unless-stopped linuxserver/ddclient
-
+```
 
 ### Open VPN
 ```
