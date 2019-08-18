@@ -55,3 +55,50 @@ sudo docker-compose up -d
 ```
 curl http://localhost:8080/api -d '{"devicetype": "home assistant"}'
 ```
+
+### InfluxDB & Grafana
+```
+docker run -d \
+--name="influxdb" \
+--restart always \
+-p 8086:8086 \
+-p 8083:8083 \
+-v /volume1/docker/influxdb/:/var/lib/influxdb \
+influxdb
+```
+
+```
+docker run -d -p 3000:3000 \
+--name="grafana" \
+--restart always
+    -v /volume1/docker/grafana:/var/lib/grafana \
+    grafana/grafana
+-p 8083:8083 \
+```
+
+Grafana settings
+172.17.0.5
+d home_assistant
+u home-assistant
+p home_assistant
+
+
+### ddclient
+sudo docker run -d --name ddclient -v /home/david/data/ddclient:/config --restart unless-stopped linuxserver/ddclient
+
+
+### Open VPN
+```
+sudo docker volume create --name openvpn_data
+sudo docker run -v openvpn_data:/etc/openvpn kylemanna/openvpn ovpn_genconfig -u udp://<server> -2 -C AES-256-GCM
+sudo docker run -v openvpn_data:/etc/openvpn --rm -it kylemanna/openvpn ovpn_initpki
+#sudo docker run -v openvpn_data:/etc/openvpn --rm -it kylemanna/openvpn easyrsa build-ca
+sudo docker run -v openvpn_data:/etc/openvpn --rm -it kylemanna/openvpn easyrsa build-client-full <user>
+sudo docker run -v openvpn_data:/etc/openvpn --rm -it kylemanna/openvpn ovpn_otp_user <user>
+sudo docker run -v openvpn_data:/etc/openvpn -d -p 1194:1194/udp --name openvpn --cap-add=NET_ADMIN --restart always kylemanna/openvpn
+sudo docker run -v openvpn_data:/etc/openvpn --rm -it kylemanna/openvpn easyrsa build-client-full <user>_client nopass
+sudo docker run -v openvpn_data:/etc/openvpn --rm -it kylemanna/openvpn ovpn_getclient <user>_client > <user>_client.ovpn
+
+```
+* https://ruimarinho.github.io/post/configuring-a-secure-openvpn-2-4-server-with-docker/
+* https://toub.es/2018/02/15/low-cost-vpn-solution-with-two-factor-authentication-on-a-raspberry-pi/
