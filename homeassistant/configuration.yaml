@@ -107,6 +107,7 @@ device_tracker:
         #track_new_devices: no
   - platform: bluetooth_tracker
     track_new_devices: False
+    consider_home: 600
 
 input_select:
   house_mode:
@@ -132,7 +133,7 @@ input_select:
 input_boolean:
     lights_automation:
         name: Lights automation
-        initial: on
+        initial: off
     vacuum_automation:
         name: Vacuum automation
         initial: off
@@ -193,8 +194,19 @@ influxdb:
       - sensor.kallaren_inne_temperature
       - sensor.kallaren_ute_temperature
       - sensor.linnebo_temp
+      - sensor.luftavfuktare_kallaren_power
       - sensor.luftavfuktare_kallaren_power_2
+      - sensor.luftavfuktare_kallaren_power_3
       - switch.luftavfuktare_kallaren
+      - sensor.element_kallaren_power
+      - sensor.element_kallaren_power_2
+      - sensor.element_kallaren_power_3
+      - switch.element_kallaren
       - sensor.vader_alsback_air_temperature
       - sensor.vader_alsback_road_temperature
       - sensor.vader_alsback_humidity
+      - sensor.vader_alsback_precipitation_type
+      - sensor.element_nere_power
+      - sensor.element_uppe_power
+      - sensor.sovrum_uppe_humidity
+      - sensor.sovrum_uppe_temperature

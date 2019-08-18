@@ -4,7 +4,7 @@ import appdaemon
 import time
 
 SAMPLE_TIME = 60
-SECONDS_BETWEEN_RUN = 60 * 60 * 42
+SECONDS_BETWEEN_RUN = 60 * 60 * 18
 SECONDS_ACTIVE_CONSIDER_CLEAN = 60*30
 
 class Xiaomi(hass.Hass):
@@ -43,8 +43,9 @@ class Xiaomi(hass.Hass):
 
     if self.next_run <= 0:
       if not(self.dnd_active()):
-        self.turn_on("vacuum.xiaomi_vacuum_cleaner")
-        self.notify("Starting vacuum")
+          self.call_service("vacuum/start", entity_id="vacuum.xiaomi_vacuum_cleaner")
+          self.notify("Starting vacuum")
+          self.log("Starting vacuum")
 
-    self.log("Robot %s, next %ds, until clean %ds" % (str(isRobotOn), self.next_run, self.time_until_consider_cleaned))
+    self.log("Robot %s, dnd active %d, next %ds, until clean %ds" % (str(isRobotOn), self.dnd_active(), self.next_run, self.time_until_consider_cleaned))
     self.run_in(self.callback, SAMPLE_TIME)
