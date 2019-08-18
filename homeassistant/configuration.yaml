@@ -210,3 +210,5 @@ influxdb:
       - sensor.element_uppe_power
       - sensor.sovrum_uppe_humidity
       - sensor.sovrum_uppe_temperature
+
+system_health:
