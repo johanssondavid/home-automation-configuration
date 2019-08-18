@@ -206,8 +206,8 @@ influxdb:
       - sensor.vader_alsback_road_temperature
       - sensor.vader_alsback_humidity
       - sensor.vader_alsback_precipitation_type
-      - sensor.element_nere_power
-      - sensor.element_uppe_power
+      - sensor.element_nere_watt
+      - sensor.element_uppe_watt
       - sensor.sovrum_uppe_humidity
       - sensor.sovrum_uppe_temperature
 
