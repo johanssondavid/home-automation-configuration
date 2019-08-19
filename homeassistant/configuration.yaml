@@ -194,16 +194,9 @@ influxdb:
       - sensor.kallaren_inne_temperature
       - sensor.kallaren_ute_temperature
       - sensor.linnebo_temp
-      - sensor.luftavfuktare_kallaren_power
-      - sensor.luftavfuktare_kallaren_power_2
-      - sensor.luftavfuktare_kallaren_power_3
-      - switch.luftavfuktare_kallaren
-      - sensor.element_kallaren_power
-      - sensor.element_kallaren_power_2
-      - sensor.element_kallaren_power_3
-      - switch.element_kallaren
+      - sensor.luftavfuktaren_kallaren_watt
+      - sensor.element_kallaren_watt
       - sensor.vader_alsback_air_temperature
-      - sensor.vader_alsback_road_temperature
       - sensor.vader_alsback_humidity
       - sensor.vader_alsback_precipitation_type
       - sensor.element_nere_watt
@@ -212,3 +205,7 @@ influxdb:
       - sensor.sovrum_uppe_temperature
 
 system_health:
+
+recorder:
+  purge_keep_days: 3
+  purge_interval: 1
