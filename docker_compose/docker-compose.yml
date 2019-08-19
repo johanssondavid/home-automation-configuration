@@ -40,3 +40,21 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /home/david/home-automation-configuration/appdaemon/:/conf
+
+  influxdb:
+    image: influxdb:1.7.0
+    container_name: influxdb2
+    restart: always
+    network_mode: host
+    volumes:
+      # Data persistency
+      - /home/david/data/influxdb:/var/lib/influxdb
+
+  grafana:
+    image: grafana/grafana:6.0.2
+    user: "0"
+    container_name: grafana4
+    restart: always
+    network_mode: host
+    volumes:
+      - /home/david/data/grafana:/var/lib/grafana
