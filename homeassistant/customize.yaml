@@ -1,20 +1,14 @@
 light.golvlampa:
-  friendly_name: Golvlampa
+  friendly_name: Golvlampa soffa
 
 light.kok_fonster:
-  friendly_name: Fönster Kök
+  friendly_name: Lampa skänk
 
 light.hue_rgb1:
-  friendly_name: Sänglampa
-
-light.fonster_1:
-  friendly_name: Fönster Vardagsrum 1
-
-light.fonster_2:
-  friendly_name: Fönster Vardagsrum 2
+  friendly_name: Lampa säng
 
 light.hall:
-  friendly_name: Lampa Hall
+  friendly_name: Lampa fönster matbord
 
 light.sovrum_fonster:
   friendly_name: Fönster Sovrum

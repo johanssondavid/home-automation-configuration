@@ -5,3 +5,4 @@ __pycache__
 *.log
 known_devices.yaml
 appdaemon/compiled
+homeassistant/tellduslive.conf

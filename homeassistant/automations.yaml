@@ -1,0 +1,11 @@
+# automations.yaml
+- alias: "Wake me up with bedroom light transition for weekdays"
+  trigger:
+    platform: template
+    value_template: "{{ states('sensor.time') == (states.input_datetime.wakeup_time.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
+  action:
+    - service: light.turn_on
+      entity_id: light.hall
+      data:
+        transition: 60
+        brightness: 255

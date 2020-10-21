@@ -2,6 +2,6 @@ modes:
   module: modes
   class: Modes
 
-xiaomi:
-  module: xiaomi
-  class: Xiaomi
+balkong:
+  module: balkong
+  class: Balkong

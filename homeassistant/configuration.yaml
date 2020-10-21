@@ -75,6 +75,9 @@ sensor:
       - wind_direction
       - wind_direction_text
       - wind_speed
+  - platform: time_date
+    display_options:
+      - 'time'      
 
 group: !include groups.yaml
 automation: !include automations.yaml
@@ -109,16 +112,6 @@ device_tracker:
     track_new_devices: False
     consider_home: 600
 
-input_select:
-  house_mode:
-    name: House Mode
-    options:
-    - Evening
-    - Night
-    - Day
-    - Morning
-    initial: Evening
-
     #apple_tv:
     #  - host: 192.168.0.14
     #    login_id: 00000000-3f5b-b3eb-3fa8-fb3ef8224211
@@ -130,28 +123,31 @@ input_select:
 #    username: home-assistant
 #    password: !secret http
 
-input_boolean:
-    lights_automation:
-        name: Lights automation
-        initial: off
-    vacuum_automation:
-        name: Vacuum automation
-        initial: off
-    wakeuplight_automation:
-        name: Wake up light
-        initial: off
-    automations_off:
-        name: All automations off
-        initial: off
+input_boolean :
+  wakeup_enabled:
+    name: "Wake-up lights"
+    initial: on
+    icon: mdi:theme-light-dark
+  wakeup_weekend:
+    name: "Wake up light weekends"
+    initial: off # I disable the system on default on weekends
+    icon: mdi:calendar-blank
+
+input_datetime:
+  wakeup_time:
+    name: "Start lights at"
+    has_time: true
+    has_date: false
+    initial: "14:52"
 
 weblink:
     entities:
       - name: Deconz
-        url: http://192.168.0.36:8080/
+        url: http://192.168.1.150:8080/
       - name: Portainer
-        url: http://192.168.0.36:9000/
+        url: http://192.168.1.150:9000/
       - name: Grafana
-        url: http://192.168.0.36:3000/
+        url: http://192.168.1.150:3000/
 
 scene: !include_dir_list scenes
 
@@ -167,19 +163,12 @@ emulated_hue:
   exposed_domains:
     - script
 
-input_datetime:
-  wol:
-    name: Wake Up Light
-    has_date: false
-    has_time: true
-    initial: 05:15
-
 homekit:
 
-vacuum:
-  - platform: xiaomi_miio
-    host: 192.168.0.41
-    token: !secret xiaomi
+#vacuum:
+#  - platform: xiaomi_miio
+#    host: 192.168.0.41
+#    token: !secret xiaomi
 
 tellduslive:
 

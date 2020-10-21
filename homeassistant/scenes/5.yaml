@@ -1,4 +1,4 @@
-name: Scene 5
+name: Scene 1
 entities:
   switch.osram_plug1:
     state: on
